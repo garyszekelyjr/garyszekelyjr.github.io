@@ -1,0 +1,24 @@
+$enable-cssgrid: true;
+
+@font-face {
+    font-family: VT323;
+    src: url(assets/VT323.ttf);
+}
+
+* {
+    font-family: VT323;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap";
