@@ -4,13 +4,10 @@ function EducationComponent({ degree, major, concentration, school, start, end }
     return (
         <div className='card bg-body-secondary'>
             <div className='card-body'>
-                {degree}, {major}
-                <br />
-                Concentration: {concentration}
-                <br />
-                {school}
-                <br />
-                {start} &mdash;  {end}
+                <div className='fs-2'>{degree}, {major}</div>
+                <div className='fs-4'>Concentration: {concentration}</div>
+                <div className='fs-4'>{school}</div>
+                <div className='fs-4'>{start} &mdash; {end}</div>
             </div>
         </div>
     );

@@ -14,7 +14,7 @@ function AboutPage() {
         (async () => {
             const response = await fetch(`${import.meta.env.VITE_DATABASE}?` + new URLSearchParams({ sheet: 'About' }));
             if (response.ok) {
-                setAbout((await response.json())[0]);
+                setAbout((await response.json()).shift());
             }
         })();
         (async () => {
