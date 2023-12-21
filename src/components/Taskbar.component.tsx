@@ -28,7 +28,7 @@ function Taskbar({ tabs, setTabs }: Props) {
                         }
                     }}>
                         <SortableContext items={tabs}>
-                            {tabs.map((tab) => <Tab tab={tab} />)}
+                            {tabs.map((tab, i) => <Tab key={i} tab={tab} />)}
                         </SortableContext>
                     </DndContext>
                 </span>

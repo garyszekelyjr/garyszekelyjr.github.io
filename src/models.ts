@@ -1,9 +1,5 @@
-type Experience = {
-    id: number;
-    title: string;
-    company: string;
-    start: string;
-    end: string;
+type About = {
+    profile: string;
 }
 
 type Education = {
@@ -16,6 +12,14 @@ type Education = {
     end: string;
 }
 
+type Experience = {
+    id: number;
+    title: string;
+    company: string;
+    start: string;
+    end: string;
+}
+
 type Project = {
     id: number;
     name: string;
@@ -24,4 +28,4 @@ type Project = {
     link: string;
 }
 
-export type { Experience, Education, Project };
+export type { About, Experience, Education, Project };

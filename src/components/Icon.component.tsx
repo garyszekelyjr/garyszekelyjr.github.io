@@ -13,7 +13,8 @@ function Icon({ name, openApplication }: Props) {
         <div ref={setNodeRef} onDoubleClick={() => { openApplication(name); }} className='flex-fill text-center' style={{ transform: CSS.Translate.toString(transform) }} {...listeners} {...attributes}>
             <i className={`bi bi-${{
                 'About': 'info-circle-fill',
-                'Projects': 'folder-fill'
+                'Projects': 'folder-fill',
+                'Contact': 'person-rolodex'
             }[name]} fs-2`} />
             <div className="fs-2">{name}</div>
         </div>

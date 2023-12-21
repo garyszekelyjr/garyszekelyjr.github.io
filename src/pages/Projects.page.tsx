@@ -20,7 +20,7 @@ function Projects() {
         <div className='h-100 d-flex justify-content-center align-items-center'>
             <div className='spinner-border' />
         </div>
-    ) : projects.map((project) => <ProjectComponent {...project} />);
+    ) : projects.map((project) => <ProjectComponent key={project.id} {...project} />);
 }
 
 export default Projects;

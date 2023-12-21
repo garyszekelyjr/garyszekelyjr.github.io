@@ -33,7 +33,7 @@ function Window({ window, constraints, closeApplication, children }: Props) {
                     </div>
                 </div>
             </div>
-            <div className='flex-fill container-fluid overflow-auto'>
+            <div className='flex-fill p-4 overflow-auto'>
                 {children}
             </div>
         </motion.div>

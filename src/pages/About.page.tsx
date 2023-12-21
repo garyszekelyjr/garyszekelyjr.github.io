@@ -1,15 +1,22 @@
 import { useEffect, useState } from 'react';
 
-import { Experience, Education } from '../models';
+import { About, Experience, Education } from '../models';
 
 import ExperienceComponent from '../components/Experience.component';
 import EducationComponent from '../components/Education.component';
 
-function About() {
+function AboutPage() {
+    const [about, setAbout] = useState<About>();
     const [experiences, setExperiences] = useState<Experience[]>();
     const [educations, setEducations] = useState<Education[]>();
 
     useEffect(() => {
+        (async () => {
+            const response = await fetch(`${import.meta.env.VITE_DATABASE}?` + new URLSearchParams({ sheet: 'About' }));
+            if (response.ok) {
+                setAbout((await response.json())[0]);
+            }
+        })();
         (async () => {
             const response = await fetch(`${import.meta.env.VITE_DATABASE}?` + new URLSearchParams({ sheet: 'Experience' }));
             if (response.ok) {
@@ -30,7 +37,11 @@ function About() {
                 <div className='col p-3'>
                     <div className='card'>
                         <div className='card-body'>
-
+                            {about === undefined ? (
+                                <div className='d-flex justify-content-center align-items-center'>
+                                    <div className='spinner-border' />
+                                </div>
+                            ) : about.profile}
                         </div>
                     </div>
                 </div>
@@ -69,4 +80,4 @@ function About() {
     );
 }
 
-export default About;
+export default AboutPage;

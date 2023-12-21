@@ -10,7 +10,7 @@ function ProjectComponent({ name, description, stack, link }: Project) {
                 <p className="card-text">{description}</p>
             </div>
             <div className="card-footer">
-                {stack.split(', ').map((skill) => <span className="badge bg-primary">{skill}</span>)}
+                {stack.split(', ').map((skill, i) => <span key={i} className="badge bg-primary">{skill}</span>)}
             </div>
         </div>
     );

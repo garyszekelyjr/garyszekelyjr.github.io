@@ -5,9 +5,9 @@ import Background from "./Background.component";
 import Cell from "./Cell.component";
 import Icon from "./Icon.component";
 import Window from "./Window.component";
-import Contact from "./Contact.component";
+import Contact from "../pages/Contact.page";
 
-import About from "../pages/About.page";
+import AboutPage from "../pages/About.page";
 import Projects from "../pages/Projects.page";
 
 interface Props {
@@ -19,7 +19,8 @@ interface Props {
 function Desktop({ windows, openApplication, closeApplication }: Props) {
     const [icons, setIcons] = useState<{ name: string, cell: number }[]>([
         { name: 'About', cell: 0 },
-        { name: 'Projects', cell: 8 }
+        { name: 'Projects', cell: 8 },
+        { name: 'Contact', cell: 16 }
     ]);
 
     const onDragEnd = useCallback(({ active, over }: DragEndEvent) => {
@@ -47,13 +48,13 @@ function Desktop({ windows, openApplication, closeApplication }: Props) {
                     })}
                 </DndContext>
             </div>
-            <Contact />
             <Background />
             {windows.map((window) => (
                 <Window key={window} window={window} constraints={constraints} closeApplication={closeApplication}>
                     {{
-                        'About': <About />,
-                        'Projects': <Projects />
+                        'About': <AboutPage />,
+                        'Projects': <Projects />,
+                        'Contact': <Contact />
                     }[window]}
                 </Window>
             ))}
