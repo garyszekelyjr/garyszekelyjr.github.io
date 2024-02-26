@@ -46,7 +46,7 @@ function AboutPage() {
                     </div>
                 </div>
             </div>
-            <div className='row flex-wrap'>
+            <div className='row'>
                 <div className='col p-3'>
                     <div className='card'>
                         <div className='card-header'>
@@ -61,6 +61,8 @@ function AboutPage() {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className='row'>
                 <div className='col p-3'>
                     <div className='card'>
                         <div className='card-header'>
