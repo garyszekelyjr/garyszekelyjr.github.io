@@ -4,7 +4,7 @@ import { Project } from "../models";
 
 import ProjectComponent from "../components/Project.component";
 
-function Projects() {
+function ProjectsPage() {
     const [projects, setProjects] = useState<Project[]>();
 
     useEffect(() => {
@@ -23,4 +23,4 @@ function Projects() {
     ) : projects.map((project) => <ProjectComponent key={project.id} {...project} />);
 }
 
-export default Projects;
+export default ProjectsPage;
