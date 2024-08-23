@@ -16,11 +16,11 @@ function AboutPage({ about, experiences, educations }: Props) {
                 <div className='col p-3'>
                     <div className='card'>
                         <div className='card-body'>
-                            {about === undefined ? (
+                            {about ? about.profile : (
                                 <div className='d-flex justify-content-center align-items-center'>
                                     <div className='spinner-border' />
                                 </div>
-                            ) : about.profile}
+                            )}
                         </div>
                     </div>
                 </div>
@@ -32,13 +32,13 @@ function AboutPage({ about, experiences, educations }: Props) {
                             <div className='fs-3'>Experience</div>
                         </div>
                         <div className='card-body'>
-                            {experiences === undefined ? (
+                            {experiences ? experiences
+                                .sort((a: Experience, b: Experience) => new Date(b.start).getTime() - new Date(a.start).getTime())
+                                .map((experience) => <ExperienceComponent key={experience.id} {...experience} />) : (
                                 <div className='d-flex justify-content-center align-items-center'>
                                     <div className='spinner-border' />
                                 </div>
-                            ) : experiences
-                                .sort((a: Experience, b: Experience) => new Date(b.start).getTime() - new Date(a.start).getTime())
-                                .map((experience) => <ExperienceComponent key={experience.id} {...experience} />)}
+                            )}
                         </div>
                     </div>
                 </div>
@@ -50,13 +50,13 @@ function AboutPage({ about, experiences, educations }: Props) {
                             <div className='fs-3'>Education</div>
                         </div>
                         <div className='card-body'>
-                            {educations === undefined ? (
+                            {educations ? educations
+                                .sort((a: Education, b: Education) => new Date(b.start).getTime() - new Date(a.start).getTime())
+                                .map((education) => <EducationComponent key={education.id} {...education} />) : (
                                 <div className='d-flex justify-content-center align-items-center'>
                                     <div className='spinner-border' />
                                 </div>
-                            ) : educations
-                                .sort((a: Education, b: Education) => new Date(b.start).getTime() - new Date(a.start).getTime())
-                                .map((education) => <EducationComponent key={education.id} {...education} />)}
+                            )}
                         </div>
                     </div>
                 </div>

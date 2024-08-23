@@ -1,13 +1,14 @@
 import { PropsWithChildren, MutableRefObject, useState } from 'react';
+
 import { motion, useAnimationControls } from 'framer-motion'
 
 interface Props extends PropsWithChildren {
     window: string
-    constraints: MutableRefObject<null>,
+    constraints: MutableRefObject<HTMLDivElement | null>,
     closeApplication: (name: string) => void
 }
 
-function Window({ window, constraints, closeApplication, children }: Props) {
+function WindowComponent({ window, constraints, closeApplication, children }: Props) {
     const [fullscreen, setFullscreen] = useState(false);
 
     const animationControls = useAnimationControls();
@@ -33,11 +34,11 @@ function Window({ window, constraints, closeApplication, children }: Props) {
                     </div>
                 </div>
             </div>
-            <div className='flex-fill p-4 overflow-auto'>
+            <div className='flex-fill p-4 overflow-auto' onPointerDownCapture={(event) => event.stopPropagation()}>
                 {children}
             </div>
         </motion.div>
     );
 }
 
-export default Window;
+export default WindowComponent;

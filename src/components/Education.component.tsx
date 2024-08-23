@@ -4,10 +4,10 @@ function EducationComponent({ degree, major, concentration, school, start, end }
     return (
         <div className='card bg-body-secondary'>
             <div className='card-body'>
-                <div className='fs-2'>{degree}, {major}</div>
-                <div className='fs-4'>Concentration: {concentration}</div>
-                <div className='fs-4'>{school}</div>
-                <div className="fs-4">{new Date(start).toLocaleString('en-us', {
+                <div className='fs-2 text-wrap'>{degree}, {major}</div>
+                <div className='fs-4 text-wrap'>Concentration: {concentration}</div>
+                <div className='fs-4 text-wrap'>{school}</div>
+                <div className="fs-4 text-wrap">{new Date(start).toLocaleString('en-us', {
                     year: 'numeric',
                     month: 'long'
                 })} &mdash; {new Date(end).toLocaleString('en-us', {

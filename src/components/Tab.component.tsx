@@ -5,8 +5,8 @@ interface Props {
     tab: string
 }
 
-function Tab({ tab }: Props) {
-    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: tab });
+function TabComponent({ tab }: Props) {
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: tab, animateLayoutChanges: () => false });
 
     return (
         <span ref={setNodeRef} className="me-3 fs-3" style={{ transform: CSS.Transform.toString(transform), transition }} {...attributes} {...listeners}>
@@ -19,4 +19,4 @@ function Tab({ tab }: Props) {
     );
 }
 
-export default Tab;
+export default TabComponent;

@@ -6,7 +6,7 @@ interface Props {
     openApplication: (name: string) => void
 }
 
-function Icon({ name, openApplication }: Props) {
+function IconComponent({ name, openApplication }: Props) {
     const { attributes, listeners, setNodeRef, transform } = useDraggable({ id: name });
 
     return (
@@ -21,4 +21,4 @@ function Icon({ name, openApplication }: Props) {
     );
 }
 
-export default Icon;
+export default IconComponent;

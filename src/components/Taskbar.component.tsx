@@ -1,15 +1,14 @@
-import { useState, useEffect, Dispatch, SetStateAction } from "react";
-import { DndContext, closestCenter } from "@dnd-kit/core";
-import { SortableContext, arrayMove } from "@dnd-kit/sortable";
+import { useState, useEffect } from "react";
 
-import Tab from "./Tab.component";
+import { SortableContext } from "@dnd-kit/sortable";
+
+import TabComponent from "./Tab.component";
 
 interface Props {
-    tabs: string[],
-    setTabs: Dispatch<SetStateAction<string[]>>
+    tabs: string[]
 }
 
-function Taskbar({ tabs, setTabs }: Props) {
+function TaskbarComponent({ tabs }: Props) {
     const [date, setDate] = useState(new Date());
 
     useEffect(() => {
@@ -19,17 +18,11 @@ function Taskbar({ tabs, setTabs }: Props) {
 
     return (
         <div className="navbar bg-body-secondary">
-            <div className="container-fluid">
+            <div className="container-fluid mx-3">
                 <span className="d-flex align-items-center">
-                    <DndContext collisionDetection={closestCenter} onDragEnd={({ active, over }) => {
-                        if (active.id !== over?.id) {
-                            setTabs(arrayMove(tabs, tabs.indexOf(active.id as string), tabs.indexOf(over?.id as string)));
-                        }
-                    }}>
-                        <SortableContext items={tabs}>
-                            {tabs.map((tab, i) => <Tab key={i} tab={tab} />)}
-                        </SortableContext>
-                    </DndContext>
+                    <SortableContext items={tabs}>
+                        {tabs.map((tab, i) => <TabComponent key={i} tab={tab} />)}
+                    </SortableContext>
                 </span>
                 <span className="fs-3">{`${date.toLocaleDateString()}`}&nbsp;&nbsp;{`${date.toLocaleTimeString()}`}</span>
             </div>
@@ -37,4 +30,4 @@ function Taskbar({ tabs, setTabs }: Props) {
     );
 }
 
-export default Taskbar;
+export default TaskbarComponent;

@@ -7,11 +7,11 @@ interface Props {
 }
 
 function ProjectsPage({ projects }: Props) {
-    return projects === undefined ? (
+    return projects ? projects.map((project) => <ProjectComponent key={project.id} {...project} />) : (
         <div className='h-100 d-flex justify-content-center align-items-center'>
             <div className='spinner-border' />
         </div>
-    ) : projects.map((project) => <ProjectComponent key={project.id} {...project} />);
+    );
 }
 
 export default ProjectsPage;
