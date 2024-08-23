@@ -21,7 +21,6 @@ function Taskbar({ tabs, setTabs }: Props) {
         <div className="navbar bg-body-secondary">
             <div className="container-fluid">
                 <span className="d-flex align-items-center">
-                    <span className="fs-3 me-5">GSJ</span>
                     <DndContext collisionDetection={closestCenter} onDragEnd={({ active, over }) => {
                         if (active.id !== over?.id) {
                             setTabs(arrayMove(tabs, tabs.indexOf(active.id as string), tabs.indexOf(over?.id as string)));

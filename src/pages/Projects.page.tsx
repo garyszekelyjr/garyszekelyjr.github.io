@@ -1,21 +1,12 @@
-import { useState, useEffect } from "react";
-
 import { Project } from "../models";
 
 import ProjectComponent from "../components/Project.component";
 
-function ProjectsPage() {
-    const [projects, setProjects] = useState<Project[]>();
+interface Props {
+    projects: Project[] | undefined
+}
 
-    useEffect(() => {
-        (async () => {
-            const response = await fetch(`${import.meta.env.VITE_DATABASE}?` + new URLSearchParams({ sheet: 'Project' }));
-            if (response.ok) {
-                setProjects(await response.json());
-            }
-        })();
-    }, []);
-
+function ProjectsPage({ projects }: Props) {
     return projects === undefined ? (
         <div className='h-100 d-flex justify-content-center align-items-center'>
             <div className='spinner-border' />

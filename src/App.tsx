@@ -1,8 +1,7 @@
 import { useCallback, useState } from 'react';
 
-import Desktop from './components/Desktop.component';
+import Desktop from './Desktop';
 import Taskbar from './components/Taskbar.component';
-
 
 function App() {
     const [windows, setWindows] = useState<string[]>([]);

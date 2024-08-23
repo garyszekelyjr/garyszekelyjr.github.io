@@ -7,7 +7,13 @@ function EducationComponent({ degree, major, concentration, school, start, end }
                 <div className='fs-2'>{degree}, {major}</div>
                 <div className='fs-4'>Concentration: {concentration}</div>
                 <div className='fs-4'>{school}</div>
-                <div className='fs-4'>{start} &mdash; {end}</div>
+                <div className="fs-4">{new Date(start).toLocaleString('en-us', {
+                    year: 'numeric',
+                    month: 'long'
+                })} &mdash; {new Date(end).toLocaleString('en-us', {
+                    year: 'numeric',
+                    month: 'long'
+                })}</div>
             </div>
         </div>
     );

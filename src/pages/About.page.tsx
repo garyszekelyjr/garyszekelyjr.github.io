@@ -1,36 +1,15 @@
-import { useEffect, useState } from 'react';
-
-import { About, Experience, Education } from '../models';
+import { About, Education, Experience } from '../models';
 
 import ExperienceComponent from '../components/Experience.component';
 import EducationComponent from '../components/Education.component';
 
-function AboutPage() {
-    const [about, setAbout] = useState<About>();
-    const [experiences, setExperiences] = useState<Experience[]>();
-    const [educations, setEducations] = useState<Education[]>();
+interface Props {
+    about: About | undefined,
+    experiences: Experience[] | undefined,
+    educations: Education[] | undefined
+}
 
-    useEffect(() => {
-        (async () => {
-            const response = await fetch(`${import.meta.env.VITE_DATABASE}?` + new URLSearchParams({ sheet: 'About' }));
-            if (response.ok) {
-                setAbout((await response.json()).shift());
-            }
-        })();
-        (async () => {
-            const response = await fetch(`${import.meta.env.VITE_DATABASE}?` + new URLSearchParams({ sheet: 'Experience' }));
-            if (response.ok) {
-                setExperiences(await response.json());
-            }
-        })();
-        (async () => {
-            const response = await fetch(`${import.meta.env.VITE_DATABASE}?` + new URLSearchParams({ sheet: 'Education' }));
-            if (response.ok) {
-                setEducations(await response.json());
-            }
-        })();
-    }, []);
-
+function AboutPage({ about, experiences, educations }: Props) {
     return (
         <>
             <div className='row'>
@@ -57,7 +36,9 @@ function AboutPage() {
                                 <div className='d-flex justify-content-center align-items-center'>
                                     <div className='spinner-border' />
                                 </div>
-                            ) : experiences.map((experience) => <ExperienceComponent key={experience.id} {...experience} />)}
+                            ) : experiences
+                                .sort((a: Experience, b: Experience) => new Date(b.start).getTime() - new Date(a.start).getTime())
+                                .map((experience) => <ExperienceComponent key={experience.id} {...experience} />)}
                         </div>
                     </div>
                 </div>
@@ -73,7 +54,9 @@ function AboutPage() {
                                 <div className='d-flex justify-content-center align-items-center'>
                                     <div className='spinner-border' />
                                 </div>
-                            ) : educations.map((education) => <EducationComponent key={education.id} {...education} />)}
+                            ) : educations
+                                .sort((a: Education, b: Education) => new Date(b.start).getTime() - new Date(a.start).getTime())
+                                .map((education) => <EducationComponent key={education.id} {...education} />)}
                         </div>
                     </div>
                 </div>
