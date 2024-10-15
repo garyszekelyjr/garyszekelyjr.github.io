@@ -11,11 +11,12 @@ $enable-cssgrid: true;
 }
 
 html,
-body {
+body,
+#app {
     height: 100%;
 }
 
-#root,
+main,
 form {
     height: 100%;
     display: flex;

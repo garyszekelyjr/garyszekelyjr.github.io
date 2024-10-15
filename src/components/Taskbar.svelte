@@ -1,0 +1,29 @@
+<script lang="ts">
+    import { onMount } from "svelte";
+    import Tab from "./Tab.svelte";
+    import { Sortable } from "@shopify/draggable";
+
+    export let tabs: string[];
+    let date = new Date();
+
+    setInterval(() => {
+        date = new Date();
+    }, 1000);
+
+    let container: HTMLElement;
+
+    onMount(() => {
+        new Sortable(container, { draggable: "span" });
+    });
+</script>
+
+<div class="navbar bg-body-secondary">
+    <div class="container-fluid mx-3">
+        <span bind:this={container} class="d-flex align-items-center">
+            {#each tabs as tab}
+                <Tab {tab} />
+            {/each}
+        </span>
+        <span class="fs-3">{`${date.toLocaleDateString()}`}&nbsp;&nbsp;{`${date.toLocaleTimeString()}`}</span>
+    </div>
+</div>
