@@ -13,7 +13,7 @@
                 <i class="bi bi-dash" />
             </button>
             <button
-                on:click={() => {
+                on:click={(event) => {
                     fullscreen = !fullscreen;
                 }}
                 class="btn btn-warning"

@@ -44,14 +44,14 @@
     (async () => {
         const response = await fetch(`${import.meta.env.VITE_DATABASE}?` + new URLSearchParams({ sheet: "Experience" }));
         if (response.ok) {
-            experiences = await response.json()
+            experiences = await response.json();
             experiences = experiences.sort((a: Experience, b: Experience) => new Date(b.start).getTime() - new Date(a.start).getTime());
         }
     })();
     (async () => {
         const response = await fetch(`${import.meta.env.VITE_DATABASE}?` + new URLSearchParams({ sheet: "Education" }));
         if (response.ok) {
-            educations = await response.json()
+            educations = await response.json();
             educations = educations.sort((a: Education, b: Education) => new Date(b.start).getTime() - new Date(a.start).getTime());
         }
     })();
