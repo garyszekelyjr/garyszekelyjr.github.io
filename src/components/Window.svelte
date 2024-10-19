@@ -11,11 +11,11 @@
     gsap.registerPlugin(Draggable);
 
     onMount(() => {
-        Draggable.create(".card", { bounds: "main > div" });
+        Draggable.create(".window", { bounds: ".desktop" });
     });
 </script>
 
-<div class={`card ${fullscreen ? "w-100 h-100" : "w-50 h-75"} position-absolute`}>
+<div class={`card ${fullscreen ? "w-100 h-100" : "w-50 h-75"} position-absolute window`}>
     <div class="card-header d-flex justify-content-between align-items-center">
         <span class="display-6">{window}</span>
         <div>
