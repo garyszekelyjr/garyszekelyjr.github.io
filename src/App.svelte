@@ -65,7 +65,7 @@
 </script>
 
 <main>
-    <div class="flex-fill position-relative d-flex justify-content-center align-items-center">
+    <div class="flex-fill position-relative d-flex justify-content-center align-items-center desktop">
         <Background />
         <div class="position-absolute w-100 h-100 grid p-3">
             {#each Array.from({ length: 48 }) as _, i}

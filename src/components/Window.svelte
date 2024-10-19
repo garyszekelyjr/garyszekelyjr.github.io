@@ -1,8 +1,18 @@
 <script lang="ts">
+    import { gsap } from "gsap";
+    import { Draggable } from "gsap/Draggable";
+    import { onMount } from "svelte";
+
     export let window: string;
     export let closeApplication: (window: string) => void;
 
     let fullscreen = false;
+
+    gsap.registerPlugin(Draggable);
+
+    onMount(() => {
+        Draggable.create(".card", { bounds: "main > div" });
+    });
 </script>
 
 <div class={`card ${fullscreen ? "w-100 h-100" : "w-50 h-75"} position-absolute`}>
@@ -13,7 +23,7 @@
                 <i class="bi bi-dash" />
             </button>
             <button
-                on:click={(event) => {
+                on:click={() => {
                     fullscreen = !fullscreen;
                 }}
                 class="btn btn-warning"
