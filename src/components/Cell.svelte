@@ -18,7 +18,6 @@
                     {
                         About: "info-circle-fill",
                         Projects: "folder-fill",
-                        Contact: "person-rolodex",
                     }[name]
                 } fs-2`}
             />

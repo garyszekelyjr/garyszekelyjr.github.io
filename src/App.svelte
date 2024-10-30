@@ -3,7 +3,6 @@
 
     import { default as AboutPage } from "./pages/About.svelte";
     import Projects from "./pages/Projects.svelte";
-    import Contact from "./pages/Contact.svelte";
 
     import Background from "./components/Background.svelte";
     import Cell from "./components/Cell.svelte";
@@ -13,7 +12,6 @@
     let icons = [
         { name: "About", cell: 0 },
         { name: "Projects", cell: 10 },
-        { name: "Contact", cell: 20 },
     ];
 
     let windows: string[] = [];
@@ -36,27 +34,27 @@
     }
 
     (async () => {
-        const response = await fetch(`${import.meta.env.VITE_DATABASE}?` + new URLSearchParams({ sheet: "About" }));
+        const response = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "About" }));
         if (response.ok) {
             about = (await response.json()).shift();
         }
     })();
     (async () => {
-        const response = await fetch(`${import.meta.env.VITE_DATABASE}?` + new URLSearchParams({ sheet: "Experience" }));
+        const response = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Experience" }));
         if (response.ok) {
             experiences = await response.json();
             experiences = experiences.sort((a: Experience, b: Experience) => new Date(b.start).getTime() - new Date(a.start).getTime());
         }
     })();
     (async () => {
-        const response = await fetch(`${import.meta.env.VITE_DATABASE}?` + new URLSearchParams({ sheet: "Education" }));
+        const response = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Education" }));
         if (response.ok) {
             educations = await response.json();
             educations = educations.sort((a: Education, b: Education) => new Date(b.start).getTime() - new Date(a.start).getTime());
         }
     })();
     (async () => {
-        const response = await fetch(`${import.meta.env.VITE_DATABASE}?` + new URLSearchParams({ sheet: "Project" }));
+        const response = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Project" }));
         if (response.ok) {
             projects = await response.json();
             projects = projects.sort((a: Project, b: Project) => a.name.localeCompare(b.name));
@@ -83,9 +81,6 @@
                 {/if}
                 {#if window === "Projects"}
                     <Projects {projects} />
-                {/if}
-                {#if window === "Contact"}
-                    <Contact />
                 {/if}
             </Window>
         {/each}
