@@ -1,6 +1,6 @@
 type About = {
     profile: string;
-}
+};
 
 type Education = {
     id: number;
@@ -10,7 +10,7 @@ type Education = {
     school: string;
     start: string;
     end: string;
-}
+};
 
 type Experience = {
     id: number;
@@ -18,7 +18,7 @@ type Experience = {
     company: string;
     start: string;
     end: string;
-}
+};
 
 type Project = {
     id: number;
@@ -26,6 +26,6 @@ type Project = {
     description: string;
     stack: string;
     link: string;
-}
+};
 
-export type { About, Experience, Education, Project };
+export type { About, Education, Experience, Project };
