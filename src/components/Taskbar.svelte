@@ -3,14 +3,18 @@
     import Tab from "./Tab.svelte";
     import { Sortable } from "@shopify/draggable";
 
-    export let tabs: string[];
-    let date = new Date();
+    interface Props {
+        tabs: string[];
+    }
+
+    let { tabs }: Props = $props();
+    let date = $state(new Date());
 
     setInterval(() => {
         date = new Date();
     }, 1000);
 
-    let container: HTMLElement;
+    let container: HTMLElement = $state();
 
     onMount(() => {
         new Sortable(container, { draggable: "span" });

@@ -1,11 +1,15 @@
 <script lang="ts">
-    export let name: string | undefined;
-    export let openApplication: (name: string) => void;
+    interface Props {
+        name: string | undefined;
+        openApplication: (name: string) => void;
+    }
+
+    let { name, openApplication }: Props = $props();
 </script>
 
 <div class="d-flex align-items-center">
     <button
-        on:dblclick={() => {
+        ondblclick={() => {
             if (name) {
                 openApplication(name);
             }
@@ -20,7 +24,7 @@
                         Projects: "folder-fill",
                     }[name]
                 } fs-2`}
-            />
+></i>
             <div class="fs-2">{name}</div>
         {/if}
     </button>

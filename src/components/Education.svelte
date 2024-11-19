@@ -1,10 +1,21 @@
 <script lang="ts">
-    export let degree: string;
-    export let major: string;
-    export let concentration: string;
-    export let school: string;
-    export let start: string;
-    export let end: string;
+    interface Props {
+        degree: string;
+        major: string;
+        concentration: string;
+        school: string;
+        start: string;
+        end: string;
+    }
+
+    let {
+        degree,
+        major,
+        concentration,
+        school,
+        start,
+        end
+    }: Props = $props();
 </script>
 
 <div class='card bg-body-secondary'>

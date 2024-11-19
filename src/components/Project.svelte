@@ -1,8 +1,17 @@
 <script lang="ts">
-    export let name: string;
-    export let description: string;
-    export let stack: string;
-    export let link: string;
+    interface Props {
+        name: string;
+        description: string;
+        stack: string;
+        link: string;
+    }
+
+    let {
+        name,
+        description,
+        stack,
+        link
+    }: Props = $props();
 
     let badges = stack.split(', ');
 </script>

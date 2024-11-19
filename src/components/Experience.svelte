@@ -1,8 +1,17 @@
 <script lang="ts">
-    export let title: string;
-    export let company: string;
-    export let start: string;
-    export let end: string; 
+    interface Props {
+        title: string;
+        company: string;
+        start: string;
+        end: string;
+    }
+
+    let {
+        title,
+        company,
+        start,
+        end
+    }: Props = $props();
 </script>
 
 <div class='card bg-body-secondary'>

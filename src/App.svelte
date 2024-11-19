@@ -14,12 +14,12 @@
         { name: "Projects", cell: 10 },
     ];
 
-    let windows: string[] = [];
-    let tabs: string[] = [];
-    let about: About;
-    let experiences: Experience[];
-    let educations: Education[];
-    let projects: Project[];
+    let windows: string[] = $state([]);
+    let tabs: string[] = $state([]);
+    let about: About | undefined = $state();
+    let experiences: Experience[] | undefined = $state();
+    let educations: Education[] | undefined = $state();
+    let projects: Project[] = $state([]);
 
     function openApplication(name: string) {
         if (!windows.includes(name)) {
@@ -42,13 +42,17 @@
         const experienceResponse = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Experience" }));
         if (experienceResponse.ok) {
             experiences = await experienceResponse.json();
-            experiences = experiences.sort((a: Experience, b: Experience) => new Date(b.start).getTime() - new Date(a.start).getTime());
+            if (experiences) {
+                experiences = experiences.sort((a: Experience, b: Experience) => new Date(b.start).getTime() - new Date(a.start).getTime());
+            }
         }
 
         const educationResponse = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Education" }));
         if (educationResponse.ok) {
             educations = await educationResponse.json();
-            educations = educations.sort((a: Education, b: Education) => new Date(b.start).getTime() - new Date(a.start).getTime());
+            if (educations) {
+                educations = educations.sort((a: Education, b: Education) => new Date(b.start).getTime() - new Date(a.start).getTime());
+            }
         }
 
         const projectResponse = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Project" }));

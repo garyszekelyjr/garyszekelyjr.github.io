@@ -3,9 +3,13 @@
     import { default as ExperienceComponent } from "../components/Experience.svelte";
     import { default as EducationComponent } from "../components/Education.svelte";
 
-    export let about: About;
-    export let experiences: Experience[];
-    export let educations: Education[];
+    interface Props {
+        about: About | undefined;
+        experiences: Experience[] | undefined;
+        educations: Education[] | undefined;
+    }
+
+    let { about, experiences, educations }: Props = $props();
 </script>
 
 <div>
@@ -15,7 +19,7 @@
                 <div class="fs-1">{about.profile}</div>
             {:else}
                 <div class="d-flex justify-content-center align-items-center">
-                    <div class="spinner-border" />
+                    <div class="spinner-border"></div>
                 </div>
             {/if}
         </div>
@@ -31,7 +35,7 @@
                 {/each}
             {:else}
                 <div class="d-flex justify-content-center align-items-center">
-                    <div class="spinner-border" />
+                    <div class="spinner-border"></div>
                 </div>
             {/if}
         </div>
@@ -47,7 +51,7 @@
                 {/each}
             {:else}
                 <div class="d-flex justify-content-center align-items-center">
-                    <div class="spinner-border" />
+                    <div class="spinner-border"></div>
                 </div>
             {/if}
         </div>

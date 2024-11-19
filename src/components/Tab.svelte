@@ -1,5 +1,9 @@
 <script lang="ts">
-    export let tab: string;
+    interface Props {
+        tab: string;
+    }
+
+    let { tab }: Props = $props();
 </script>
 
 <span class="me-3 fs-3">
@@ -7,5 +11,5 @@
         'About': 'info-circle-fill',
         'Projects': 'folder-fill',
         'Contact': 'person-rolodex'
-    }[tab]} fs-3`} />
+    }[tab]} fs-3`}></i>
 </span>

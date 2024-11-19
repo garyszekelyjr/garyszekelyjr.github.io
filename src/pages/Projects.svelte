@@ -2,7 +2,11 @@
     import { type Project } from "../models";
     import { default as ProjectComponent } from "../components/Project.svelte";
 
-    export let projects: Project[];
+    interface Props {
+        projects: Project[];
+    }
+
+    let { projects }: Props = $props();
 </script>
 
 {#if projects}
@@ -11,6 +15,6 @@
     {/each}
 {:else}
     <div class="h-100 d-flex justify-content-center align-items-center">
-        <div class="spinner-border" />
+        <div class="spinner-border"></div>
     </div>
 {/if}
