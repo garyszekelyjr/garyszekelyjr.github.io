@@ -19,7 +19,7 @@
     let about: About | undefined = $state();
     let experiences: Experience[] | undefined = $state();
     let educations: Education[] | undefined = $state();
-    let projects: Project[] = $state([]);
+    let projects: Project[] | undefined = $state();
 
     function openApplication(name: string) {
         if (!windows.includes(name)) {
@@ -58,7 +58,9 @@
         const projectResponse = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Project" }));
         if (projectResponse.ok) {
             projects = await projectResponse.json();
-            projects = projects.sort((a: Project, b: Project) => a.name.localeCompare(b.name));
+            if (projects) {
+                projects = projects.sort((a: Project, b: Project) => a.name.localeCompare(b.name));
+            }
         }
     })();
 </script>

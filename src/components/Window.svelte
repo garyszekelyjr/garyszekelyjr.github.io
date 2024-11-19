@@ -28,7 +28,7 @@
                 <i class="bi bi-dash"></i>
             </button>
             <button
-            aria-label="fullscreen"
+                aria-label="fullscreen"
                 onclick={() => {
                     fullscreen = !fullscreen;
                 }}
@@ -37,7 +37,7 @@
                 <i class={`bi bi-${fullscreen ? "fullscreen-exit" : "fullscreen"}`}></i>
             </button>
             <button
-            aria-label="close"
+                aria-label="close"
                 onclick={() => {
                     closeApplication(window);
                 }}

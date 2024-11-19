@@ -3,7 +3,7 @@
     import { default as ProjectComponent } from "../components/Project.svelte";
 
     interface Props {
-        projects: Project[];
+        projects: Project[] | undefined;
     }
 
     let { projects }: Props = $props();
