@@ -14,10 +14,12 @@
         date = new Date();
     }, 1000);
 
-    let container: HTMLElement = $state();
+    let container: HTMLElement | undefined = $state();
 
     onMount(() => {
-        new Sortable(container, { draggable: "span" });
+        if (container) {
+            new Sortable(container, { draggable: "span" });
+        }
     });
 </script>
 

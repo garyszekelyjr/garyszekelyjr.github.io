@@ -1,4 +1,4 @@
-<script async lang="ts">
+<script lang="ts">
     import { type About, type Experience, type Education, type Project } from "./models";
 
     import { default as AboutPage } from "./pages/About.svelte";

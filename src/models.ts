@@ -3,7 +3,6 @@ type About = {
 };
 
 type Education = {
-    id: number;
     degree: string;
     major: string;
     concentration: string;
@@ -13,7 +12,6 @@ type Education = {
 };
 
 type Experience = {
-    id: number;
     title: string;
     company: string;
     start: string;
@@ -21,7 +19,6 @@ type Experience = {
 };
 
 type Project = {
-    id: number;
     name: string;
     description: string;
     stack: string;

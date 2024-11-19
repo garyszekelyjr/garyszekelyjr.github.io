@@ -6,14 +6,9 @@
         link: string;
     }
 
-    let {
-        name,
-        description,
-        stack,
-        link
-    }: Props = $props();
+    let { name, description, stack, link }: Props = $props();
 
-    let badges = stack.split(', ');
+    let badges = stack.split(", ");
 </script>
 
 <div class="card m-3">

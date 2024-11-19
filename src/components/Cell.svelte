@@ -24,7 +24,7 @@
                         Projects: "folder-fill",
                     }[name]
                 } fs-2`}
-></i>
+            ></i>
             <div class="fs-2">{name}</div>
         {/if}
     </button>
