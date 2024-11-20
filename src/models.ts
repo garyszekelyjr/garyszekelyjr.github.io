@@ -1,28 +1,28 @@
-type About = {
+interface About {
     profile: string;
-};
+}
 
-type Education = {
+interface Education {
     degree: string;
     major: string;
     concentration: string;
     school: string;
     start: string;
     end: string;
-};
+}
 
-type Experience = {
+interface Experience {
     title: string;
     company: string;
     start: string;
     end: string;
-};
+}
 
-type Project = {
+interface Project {
     name: string;
     description: string;
     stack: string;
     link: string;
-};
+}
 
 export type { About, Education, Experience, Project };

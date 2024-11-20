@@ -11,16 +11,16 @@
     let badges = stack.split(", ");
 </script>
 
-<div class="card m-3">
-    <div class="card-body">
-        <h4 class="card-title">
+<div class="">
+    <div class="">
+        <h4 class="">
             <a href={link} target="_blank">{name}</a>
         </h4>
-        <p class="card-text">{description}</p>
+        <p class="">{description}</p>
     </div>
-    <div class="card-footer">
+    <div class="">
         {#each badges as badge}
-            <span class="badge bg-primary me-1">{badge}</span>
+            <span class="mr-1">{badge}</span>
         {/each}
     </div>
 </div>

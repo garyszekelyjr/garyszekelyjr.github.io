@@ -9,11 +9,11 @@
     let { title, company, start, end }: Props = $props();
 </script>
 
-<div class="card bg-body-secondary">
-    <div class="card-body">
-        <div class="fs-2 text-wrap">{title}</div>
-        <div class="fs-4 text-wrap">{company}</div>
-        <div class="fs-4 text-wrap">
+<div class="">
+    <div class="">
+        <div class="">{title}</div>
+        <div class="">{company}</div>
+        <div class="">
             {new Date(start).toLocaleDateString("en-us", {
                 year: "numeric",
                 month: "long",

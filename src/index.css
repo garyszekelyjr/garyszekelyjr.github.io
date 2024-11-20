@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: VT323;
+    src: url(assets/VT323.ttf);
+}
+
+* {
+    font-family: VT323;
+    white-space: nowrap;
+}
+
+html,
+body,
+#app,
+main {
+    height: 100%;
+}

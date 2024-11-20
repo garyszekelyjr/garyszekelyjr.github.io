@@ -11,12 +11,12 @@
     let { degree, major, concentration, school, start, end }: Props = $props();
 </script>
 
-<div class="card bg-body-secondary">
-    <div class="card-body">
-        <div class="fs-2 text-wrap">{degree}, {major}</div>
-        <div class="fs-4 text-wrap">Concentration: {concentration}</div>
-        <div class="fs-4 text-wrap">{school}</div>
-        <div class="fs-4 text-wrap">
+<div class="">
+    <div class="">
+        <div class="">{degree}, {major}</div>
+        <div class="">Concentration: {concentration}</div>
+        <div class="">{school}</div>
+        <div class="">
             {new Date(start).toLocaleString("en-us", {
                 year: "numeric",
                 month: "long",
