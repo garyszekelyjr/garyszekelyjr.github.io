@@ -9,20 +9,18 @@
     let { title, company, start, end }: Props = $props();
 </script>
 
-<div class="">
-    <div class="">
-        <div class="">{title}</div>
-        <div class="">{company}</div>
-        <div class="">
-            {new Date(start).toLocaleDateString("en-us", {
-                year: "numeric",
-                month: "long",
-            })} &mdash; {end
-                ? new Date(end).toLocaleDateString("en-us", {
-                      year: "numeric",
-                      month: "long",
-                  })
-                : "Present"}
-        </div>
+<div class="mx-1 my-3">
+    <div class="text-white">{title}</div>
+    <div class="text-white">{company}</div>
+    <div class="text-white">
+        {new Date(start).toLocaleDateString("en-us", {
+            year: "numeric",
+            month: "long",
+        })} &mdash; {end
+            ? new Date(end).toLocaleDateString("en-us", {
+                  year: "numeric",
+                  month: "long",
+              })
+            : "Present"}
     </div>
 </div>

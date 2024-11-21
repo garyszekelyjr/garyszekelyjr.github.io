@@ -11,19 +11,17 @@
     let { degree, major, concentration, school, start, end }: Props = $props();
 </script>
 
-<div class="">
-    <div class="">
-        <div class="">{degree}, {major}</div>
-        <div class="">Concentration: {concentration}</div>
-        <div class="">{school}</div>
-        <div class="">
-            {new Date(start).toLocaleString("en-us", {
-                year: "numeric",
-                month: "long",
-            })} &mdash; {new Date(end).toLocaleString("en-us", {
-                year: "numeric",
-                month: "long",
-            })}
-        </div>
+<div class="mx-1 my-3">
+    <div class="text-white">{degree}, {major}</div>
+    <div class="text-white">Concentration: {concentration}</div>
+    <div class="text-white">{school}</div>
+    <div class="text-white">
+        {new Date(start).toLocaleString("en-us", {
+            year: "numeric",
+            month: "long",
+        })} &mdash; {new Date(end).toLocaleString("en-us", {
+            year: "numeric",
+            month: "long",
+        })}
     </div>
 </div>

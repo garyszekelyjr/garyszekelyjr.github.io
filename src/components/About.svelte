@@ -1,8 +1,9 @@
 <script lang="ts">
     import type * as Models from "../models";
-    
-    import Experience from "./Experience.svelte";
+
     import Education from "./Education.svelte";
+    import Experience from "./Experience.svelte";
+    import Loader from "./Loader.svelte";
 
     interface Props {
         about: Models.About | undefined;
@@ -13,48 +14,34 @@
     let { about, experiences, educations }: Props = $props();
 </script>
 
-<div>
-    <div class="">
-        <div class="">
-            {#if about}
-                <div class="">{about.profile}</div>
-            {:else}
-                <div class="">
-                    <div class=""></div>
-                </div>
-            {/if}
-        </div>
+<div class="">
+    <div class="mx-1 my-3">
+        {#if about}
+            <div class="text-white">{about.profile}</div>
+        {:else}
+            <Loader />
+        {/if}
     </div>
-    <div class="">
-        <div class="">
-            <div class="">Experience</div>
-        </div>
-        <div class="">
-            {#if experiences}
-                {#each experiences as experience}
-                    <Experience {...experience} />
-                {/each}
-            {:else}
-                <div class="">
-                    <div class=""></div>
-                </div>
-            {/if}
-        </div>
+    <hr />
+    <div class="mx-1 my-3">
+        <div class="text-white text-2xl">Experience</div>
+        {#if experiences}
+            {#each experiences as experience}
+                <Experience {...experience} />
+            {/each}
+        {:else}
+            <Loader />
+        {/if}
     </div>
-    <div class="">
-        <div class="">
-            <div class="">Education</div>
-        </div>
-        <div class="">
-            {#if educations}
-                {#each educations as education}
-                    <Education {...education} />
-                {/each}
-            {:else}
-                <div class="">
-                    <div class=""></div>
-                </div>
-            {/if}
-        </div>
+    <hr />
+    <div class="mx-1 my-3">
+        <div class="text-white text-2xl">Education</div>
+        {#if educations}
+            {#each educations as education}
+                <Education {...education} />
+            {/each}
+        {:else}
+            <Loader />
+        {/if}
     </div>
 </div>

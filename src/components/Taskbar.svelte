@@ -6,7 +6,7 @@
     }, 1000);
 </script>
 
-<div class="flex justify-end p-1">
-    <span class="mr-2">{`${date.toLocaleDateString()}`}</span>
-    <span>{`${date.toLocaleTimeString()}`}</span>
+<div class="flex justify-end p-2 bg-neutral-900">
+    <span class="mr-2 text-white text-3xl">{`${date.toLocaleDateString()}`}</span>
+    <span class="text-white text-3xl">{`${date.toLocaleTimeString()}`}</span>
 </div>

@@ -26,19 +26,19 @@
 </script>
 
 {#key fullscreen}
-    <div class={"window flex flex-col border bg-white absolute " + (fullscreen ? "top-0 bottom-0 left-0 right-0" : "top-1/4 bottom-1/4 left-1/4 right-1/4")}>
-        <div class="flex justify-between p-1">
-            <span>{window}</span>
+    <div class={"window flex flex-col bg-neutral-900 absolute " + (fullscreen ? "top-0 bottom-0 left-0 right-0" : "top-1/4 bottom-1/4 left-1/4 right-1/4")}>
+        <div class="flex justify-between border-b p-3">
+            <span class="text-white text-4xl">{window}</span>
             <div class="flex">
-                <button aria-label="expand" onclick={expand} class="mr-3">
-                    <img src={fullscreen ? "/minimize.svg" : "/expand.svg"} alt="expand" width="15" height="15" />
+                <button aria-label="expand" onclick={expand} class="mr-1">
+                    <img src={fullscreen ? "/arrows-pointing-in.svg" : "/arrows-pointing-out.svg"} alt="expand" width="25" />
                 </button>
                 <button aria-label="close" onclick={close}>
-                    <img src="/x.svg" alt="close" width="15" height="15" />
+                    <img src="./x.svg" alt="close" width="25" />
                 </button>
             </div>
         </div>
-        <div class="flex-auto overflow-auto p-1" onpointerdown={(event) => event.stopPropagation()}>
+        <div class="flex-auto overflow-auto px-3" onpointerdown={(event) => event.stopPropagation()}>
             {@render children?.()}
         </div>
     </div>

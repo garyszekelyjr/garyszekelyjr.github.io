@@ -10,9 +10,9 @@
 
 <div class="flex flex-col justify-center items-center">
     {#if window}
-        <button ondblclick={open} class="">
-            <img src={icon} alt={window} width="50" height="50" />
-            <p>{window}</p>
+        <button onclick={open} class="flex flex-col justify-center items-center">
+            <img src={icon} alt={window} width="50" />
+            <div class="text-white text-2xl">{window}</div>
         </button>
     {/if}
 </div>

@@ -1,6 +1,7 @@
 <script lang="ts">
     import type * as Models from "../models";
-    
+
+    import Loader from "./Loader.svelte";
     import Project from "./Project.svelte";
 
     interface Props {
@@ -11,11 +12,12 @@
 </script>
 
 {#if projects}
-    {#each projects as project}
+    {#each projects as project, index}
         <Project {...project} />
+        {#if index < projects.length - 1}
+            <hr />
+        {/if}
     {/each}
 {:else}
-    <div class="">
-        <div class=""></div>
-    </div>
+    <Loader />
 {/if}
