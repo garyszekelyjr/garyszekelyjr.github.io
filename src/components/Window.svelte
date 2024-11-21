@@ -1,7 +1,6 @@
 <script lang="ts">
     import { gsap } from "gsap";
     import { Draggable } from "gsap/Draggable";
-    import { onMount } from "svelte";
 
     interface Props {
         window: string;
@@ -12,6 +11,10 @@
     let { window, close, children }: Props = $props();
 
     let fullscreen = $state(false);
+
+    const expand = () => {
+        fullscreen = !fullscreen;
+    };
 
     gsap.registerPlugin(Draggable);
 
@@ -25,19 +28,13 @@
 {#key fullscreen}
     <div class={"window flex flex-col border bg-white absolute " + (fullscreen ? "top-0 bottom-0 left-0 right-0" : "top-1/4 bottom-1/4 left-1/4 right-1/4")}>
         <div class="flex justify-between p-1">
-            <span class="text-3xl">{window}</span>
+            <span>{window}</span>
             <div class="flex">
-                <button
-                    aria-label="expand"
-                    onclick={() => {
-                        fullscreen = !fullscreen;
-                    }}
-                    class="mr-3"
-                >
-                    <img src={fullscreen ? "/minimize.svg" : "/expand.svg"} alt="expand" width="25" height="25" />
+                <button aria-label="expand" onclick={expand} class="mr-3">
+                    <img src={fullscreen ? "/minimize.svg" : "/expand.svg"} alt="expand" width="15" height="15" />
                 </button>
                 <button aria-label="close" onclick={close}>
-                    <img src="/x.svg" alt="close" width="25" height="25" />
+                    <img src="/x.svg" alt="close" width="15" height="15" />
                 </button>
             </div>
         </div>
