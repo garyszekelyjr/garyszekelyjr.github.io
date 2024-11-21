@@ -30,30 +30,36 @@
     }
 
     (async () => {
-        const aboutresponse = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "About" }));
-        if (aboutresponse.ok) {
-            about = (await aboutresponse.json()).shift();
+        const response = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "About" }));
+        if (response.ok) {
+            about = (await response.json()).shift();
         }
+    })();
 
-        const experienceResponse = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Experience" }));
-        if (experienceResponse.ok) {
-            experiences = await experienceResponse.json();
+    (async () => {
+        const response = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Experience" }));
+        if (response.ok) {
+            experiences = await response.json();
             if (experiences) {
                 experiences = experiences.sort((a: Models.Experience, b: Models.Experience) => new Date(b.start).getTime() - new Date(a.start).getTime());
             }
         }
+    })();
 
-        const educationResponse = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Education" }));
-        if (educationResponse.ok) {
-            educations = await educationResponse.json();
+    (async () => {
+        const response = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Education" }));
+        if (response.ok) {
+            educations = await response.json();
             if (educations) {
                 educations = educations.sort((a: Models.Education, b: Models.Education) => new Date(b.start).getTime() - new Date(a.start).getTime());
             }
         }
+    })();
 
-        const projectResponse = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Project" }));
-        if (projectResponse.ok) {
-            projects = await projectResponse.json();
+    (async () => {
+        const response = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Project" }));
+        if (response.ok) {
+            projects = await response.json();
             if (projects) {
                 projects = projects.sort((a: Models.Project, b: Models.Project) => a.name.localeCompare(b.name));
             }
