@@ -70,7 +70,7 @@
 <main class="flex flex-col">
     <div class="relative flex-auto desktop">
         <Background />
-        <div class="absolute w-full h-full grid auto-rows-fr grid-cols-10">
+        <div class="absolute w-full h-full grid auto-rows-fr grid-cols-5 lg:grid-cols-10 p-2">
             {#each Array.from({ length: 48 }) as _, i}
                 {@const cell = cells.find((cell) => cell.index === i)}
                 <Cell window={cell?.window} icon={cell?.icon} open={() => open(cell?.window)} />
