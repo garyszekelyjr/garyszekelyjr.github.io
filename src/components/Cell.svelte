@@ -1,16 +1,18 @@
 <script lang="ts">
     interface Props {
         window: string | undefined;
+        icon: string | undefined;
         open: () => void;
     }
 
-    let { window, open }: Props = $props();
+    let { window, icon, open }: Props = $props();
 </script>
 
-<div class="">
+<div class="flex flex-col justify-center items-center">
     {#if window}
         <button ondblclick={open} class="">
-            <div class="">{window}</div>
+            <img src={icon} alt={window} width="50" height="50" />
+            <p>{window}</p>
         </button>
     {/if}
 </div>

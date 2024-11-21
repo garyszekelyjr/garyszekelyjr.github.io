@@ -9,8 +9,8 @@
     import Window from "./components/Window.svelte";
 
     let cells = [
-        { window: "About", index: 0 },
-        { window: "Projects", index: 10 },
+        { window: "About", icon: "user.svg", index: 0 },
+        { window: "Projects", icon: "folder.svg", index: 10 },
     ];
 
     let windows: string[] = $state([]);
@@ -19,13 +19,13 @@
     let educations: Models.Education[] | undefined = $state();
     let projects: Models.Project[] | undefined = $state();
 
-    function openWindow(window: string | undefined) {
+    function open(window: string | undefined) {
         if (window && !windows.includes(window)) {
             windows = [...windows, window];
         }
     }
 
-    function closeWindow(window: string) {
+    function close(window: string) {
         windows = windows.filter((_window) => _window !== window);
     }
 
@@ -67,11 +67,11 @@
         <div class="absolute w-full h-full grid auto-rows-fr grid-cols-10">
             {#each Array.from({ length: 48 }) as _, i}
                 {@const cell = cells.find((cell) => cell.index === i)}
-                <Cell window={cell?.window} open={() => openWindow(cell?.window)} />
+                <Cell window={cell?.window} icon={cell?.icon} open={() => open(cell?.window)} />
             {/each}
         </div>
         {#each windows as window}
-            <Window {window} close={() => closeWindow(window)}>
+            <Window {window} close={() => close(window)}>
                 {#if window === "About"}
                     <About {about} {experiences} {educations} />
                 {/if}
