@@ -21,8 +21,7 @@ interface Experience {
 interface Project {
     name: string;
     description: string;
-    stack: string;
-    link: string;
+    repo: string;
 }
 
 export type { About, Education, Experience, Project };
