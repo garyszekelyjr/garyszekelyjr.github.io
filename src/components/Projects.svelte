@@ -4,11 +4,12 @@
     import Loader from "./Loader.svelte";
     import Project from "./Project.svelte";
 
-    interface Props {
-        projects: Models.Project[] | undefined;
-    }
+    let projects: Models.Project[] = $state([]);
 
-    let { projects }: Props = $props();
+    (async () => {
+    	const response = await fetch("https://api.github.com/users/garyszekelyjr/repos");
+	    projects = await response.json();
+    })();
 </script>
 
 {#if projects}

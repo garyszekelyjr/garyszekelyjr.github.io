@@ -17,7 +17,6 @@
     let about: Models.About | undefined = $state();
     let experiences: Models.Experience[] | undefined = $state();
     let educations: Models.Education[] | undefined = $state();
-    let projects: Models.Project[] | undefined = $state();
 
     function open(window: string | undefined) {
         if (window && !windows.includes(window)) {
@@ -55,16 +54,6 @@
             }
         }
     })();
-
-    (async () => {
-        const response = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Project" }));
-        if (response.ok) {
-            projects = await response.json();
-            if (projects) {
-                projects = projects.sort((a: Models.Project, b: Models.Project) => a.name.localeCompare(b.name));
-            }
-        }
-    })();
 </script>
 
 <main class="flex flex-col">
@@ -82,7 +71,7 @@
                     <About {about} {experiences} {educations} />
                 {/if}
                 {#if window === "Projects"}
-                    <Projects {projects} />
+                    <Projects />
                 {/if}
             </Window>
         {/each}

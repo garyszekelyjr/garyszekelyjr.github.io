@@ -20,8 +20,9 @@ interface Experience {
 
 interface Project {
     name: string;
-    description: string;
-    repo: string;
+	description: string;
+    html_url: string;
+	languages_url: string;
 }
 
 export type { About, Education, Experience, Project };
