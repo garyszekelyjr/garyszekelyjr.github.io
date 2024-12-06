@@ -14,7 +14,7 @@
 
 html,
 body,
-#app,
-main {
+main, 
+#app {
     height: 100%;
 }
