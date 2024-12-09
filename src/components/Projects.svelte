@@ -4,7 +4,7 @@
     import Loader from "./Loader.svelte";
     import Project from "./Project.svelte";
 
-    let projects: Models.Project[] = $state();
+    let projects: Models.Project[]|undefined = $state();
 
     (async () => {
     	const response = await fetch("https://api.github.com/users/garyszekelyjr/repos");

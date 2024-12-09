@@ -5,9 +5,9 @@
     import Experience from "./Experience.svelte";
     import Loader from "./Loader.svelte";
 
-    let about: string = $state();
-    let experiences: Models.Experience[] = $state();
-    let educations: Models.Education[] = $state();
+    let about: string|undefined = $state();
+    let experiences: Models.Experience[]|undefined = $state();
+    let educations: Models.Education[]|undefined = $state();
 
     (async () => {
     	const response = await fetch("https://api.github.com/repos/garyszekelyjr/garyszekelyjr.github.io/contents/data.json");
