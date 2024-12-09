@@ -1,5 +1,7 @@
 import json
 
+from pathlib import Path
+
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
@@ -7,7 +9,7 @@ from playwright.sync_api import sync_playwright
 html = ''
 
 with sync_playwright() as playwright:
-    with playwright.chromium.launch() as browser:
+    with playwright.chromium.launch(headless=False) as browser:
         with browser.new_page() as page:
             page.goto("https://www.linkedin.com/in/garyszekelyjr")
             page.wait_for_load_state('domcontentloaded')
@@ -51,7 +53,7 @@ print(about)
 print(experiences)
 print(educations)
 
-with open('data.json', 'w') as f:
+with open(Path(__file__).parent / 'assets' / 'data.json', 'w') as f:
     json.dump({
         'about': about,
         'experiences': experiences,
