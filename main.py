@@ -6,22 +6,16 @@ from playwright.sync_api import sync_playwright
 
 html = ''
 
-with sync_playwright() as playwright:
-    with playwright.chromium.launch() as browser:
-        with browser.new_page() as page:
-            page.goto("https://www.linkedin.com/in/garyszekelyjr")
-            page.wait_for_load_state('domcontentloaded')
-            while True:
-                try: 
-                    html = page.content()
-                    break
-                except:
-                    pass
-
-soup = BeautifulSoup(html, 'html.parser')
-
 while True:
     try:
+        with sync_playwright() as playwright:
+            with playwright.chromium.launch() as browser:
+                with browser.new_page() as page:
+                    page.goto("https://www.linkedin.com/in/garyszekelyjr")
+                    page.wait_for_load_state('domcontentloaded')
+                    html = page.content()
+
+        soup = BeautifulSoup(html, 'html.parser')
         about = soup.find('section', {'class': 'summary'}).find('p').text
 
         experiences = [] 
