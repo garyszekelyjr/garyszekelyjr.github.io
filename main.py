@@ -11,7 +11,12 @@ with sync_playwright() as playwright:
         with browser.new_page() as page:
             page.goto("https://www.linkedin.com/in/garyszekelyjr")
             page.wait_for_load_state('domcontentloaded')
-            html = page.content()
+            while True:
+                try: 
+                    html = page.content()
+                    break
+                except:
+                    pass
 
 soup = BeautifulSoup(html, 'html.parser')
 
@@ -47,6 +52,10 @@ for education in soup.find('ul', {'class': 'education__list'}).find_all('li'):
         'concentration': concentration,
         'dates': dates
     })
+
+print(about)
+print(experiences)
+print(educations)
 
 with open('data.json', 'w') as f:
     json.dump({
