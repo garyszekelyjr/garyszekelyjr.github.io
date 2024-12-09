@@ -1,8 +1,6 @@
 name: scrape 
 
 on: push
-  # schedule:
-    - # cron: '*/5 * * * *'
 
 jobs:
   run-python-script:
