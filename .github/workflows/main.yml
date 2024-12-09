@@ -1,8 +1,8 @@
 name: scrape 
 
-on:
-  schedule:
-    - cron: '*/5 * * * *'
+on: push
+  # schedule:
+    - # cron: '*/5 * * * *'
 
 jobs:
   run-python-script:
@@ -18,7 +18,9 @@ jobs:
           python-version: '3.9'
 
       - name: install
-        run: pip install pytest-playwright beautifulsoup4 && playwright install
+        run: |
+          pip install pytest-playwright beautifulsoup4
+          playwright install
       
       - name: execute
         run: python main.py
