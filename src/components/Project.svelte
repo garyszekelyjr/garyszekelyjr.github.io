@@ -3,7 +3,7 @@
         name: string;
         description: string;
         html_url: string;
-	    languages_url: string;
+	languages_url: string;
     }
 
     let { name, description, html_url, languages_url }: Props = $props();

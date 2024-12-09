@@ -5,19 +5,27 @@
     import Experience from "./Experience.svelte";
     import Loader from "./Loader.svelte";
 
-    interface Props {
-        about: Models.About | undefined;
-        experiences: Models.Experience[] | undefined;
-        educations: Models.Education[] | undefined;
-    }
+    let about: string = $state();
+    let experiences: Models.Experience[] = $state();
+    let educations: Models.Education[] = $state();
 
-    let { about, experiences, educations }: Props = $props();
+    (async () => {
+    	const response = await fetch("https://api.github.com/repos/garyszekelyjr/garyszekelyjr.github.io/contents/data.json");
+	if (response.ok) {
+	    const download_url = (await response.json()).download_url;
+	    const data = await (await fetch(download_url)).json();
+	    about = data.about;
+	    experiences = data.experiences;
+	    educations = data.educations;
+	}
+    })();
+
 </script>
 
 <div class="">
     <div class="mx-1 my-3">
         {#if about}
-            <div class="text-white">{about.profile}</div>
+            <div class="text-white">{about}</div>
         {:else}
             <Loader />
         {/if}

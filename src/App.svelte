@@ -14,9 +14,6 @@
     ];
 
     let windows: string[] = $state([]);
-    let about: Models.About | undefined = $state();
-    let experiences: Models.Experience[] | undefined = $state();
-    let educations: Models.Education[] | undefined = $state();
 
     function open(window: string | undefined) {
         if (window && !windows.includes(window)) {
@@ -27,33 +24,6 @@
     function close(window: string) {
         windows = windows.filter((_window) => _window !== window);
     }
-
-    (async () => {
-        const response = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "About" }));
-        if (response.ok) {
-            about = (await response.json()).shift();
-        }
-    })();
-
-    (async () => {
-        const response = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Experience" }));
-        if (response.ok) {
-            experiences = await response.json();
-            if (experiences) {
-                experiences = experiences.sort((a: Models.Experience, b: Models.Experience) => new Date(b.start).getTime() - new Date(a.start).getTime());
-            }
-        }
-    })();
-
-    (async () => {
-        const response = await fetch(`${import.meta.env.VITE_URL}?` + new URLSearchParams({ sheet: "Education" }));
-        if (response.ok) {
-            educations = await response.json();
-            if (educations) {
-                educations = educations.sort((a: Models.Education, b: Models.Education) => new Date(b.start).getTime() - new Date(a.start).getTime());
-            }
-        }
-    })();
 </script>
 
 <main class="flex flex-col">
@@ -68,7 +38,7 @@
         {#each windows as window}
             <Window {window} close={() => close(window)}>
                 {#if window === "About"}
-                    <About {about} {experiences} {educations} />
+                    <About />
                 {/if}
                 {#if window === "Projects"}
                     <Projects />
