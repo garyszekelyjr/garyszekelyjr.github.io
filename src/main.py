@@ -12,7 +12,7 @@ with sync_playwright() as playwright:
     with playwright.chromium.launch(headless=False) as browser:
         with browser.new_page() as page:
             page.goto("https://www.linkedin.com/in/garyszekelyjr")
-            page.wait_for_load_state('domcontentloaded')
+            page.wait_for_load_state('load')
             html = page.content()
 
 soup = BeautifulSoup(html, 'html.parser')
@@ -49,13 +49,11 @@ for education in soup.find('ul', {'class': 'education__list'}).find_all('li'):
         'dates': dates
     })
 
-print(about)
-print(experiences)
-print(educations)
-
 with open(Path(__file__).parent / 'assets' / 'data.json', 'w') as f:
     json.dump({
         'about': about,
         'experiences': experiences,
         'educations': educations
     }, f)
+
+print('Scraped!')
