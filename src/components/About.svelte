@@ -1,28 +1,26 @@
 <script lang="ts">
-    import type * as Models from "../models";
+	import Education from "./Education.svelte";
+	import Experience from "./Experience.svelte";
 
-    import Education from "./Education.svelte";
-    import Experience from "./Experience.svelte";
-
-    import { about, experiences, educations } from "../assets/data.json";
+	import { about, experiences, educations } from "../assets/data.json";
 </script>
 
 <div class="">
-    <div class="mx-1 my-3">
-        <div class="text-white">{about}</div>
-    </div>
-    <hr />
-    <div class="mx-1 my-3">
-        <div class="text-white text-2xl">Experience</div>
-        {#each experiences as experience}
-            <Experience {...experience} />
-        {/each}
-    </div>
-    <hr />
-    <div class="mx-1 my-3">
-        <div class="text-white text-2xl">Education</div>
-        {#each educations as education}
-            <Education {...education} />
-        {/each}
-    </div>
+	<div class="mx-1 my-3">
+		<div class="text-white">{about}</div>
+	</div>
+	<hr />
+	<div class="mx-1 my-3">
+		<div class="text-white text-2xl">Experience</div>
+		{#each experiences as experience}
+			<Experience {...experience} />
+		{/each}
+	</div>
+	<hr />
+	<div class="mx-1 my-3">
+		<div class="text-white text-2xl">Education</div>
+		{#each educations as education}
+			<Education {...education} />
+		{/each}
+	</div>
 </div>

@@ -1,24 +1,26 @@
 <script lang="ts">
-    import type * as Models from "../models";
+	import type * as Models from "../models";
 
-    import Loader from "./Loader.svelte";
-    import Project from "./Project.svelte";
+	import Loader from "./Loader.svelte";
+	import Project from "./Project.svelte";
 
-    let projects: Models.Project[]|undefined = $state();
+	let projects: Models.Project[] | undefined = $state();
 
-    (async () => {
-    	const response = await fetch("https://api.github.com/users/garyszekelyjr/repos");
-	    projects = await response.json();
-    })();
+	(async () => {
+		const response = await fetch(
+			"https://api.github.com/users/garyszekelyjr/repos",
+		);
+		projects = await response.json();
+	})();
 </script>
 
 {#if projects}
-    {#each projects as project, index}
-        <Project {...project} />
-        {#if index < projects.length - 1}
-            <hr />
-        {/if}
-    {/each}
+	{#each projects as project, index}
+		<Project {...project} />
+		{#if index < projects.length - 1}
+			<hr />
+		{/if}
+	{/each}
 {:else}
-    <Loader />
+	<Loader />
 {/if}
