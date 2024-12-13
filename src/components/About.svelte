@@ -2,7 +2,26 @@
 	import Education from "./Education.svelte";
 	import Experience from "./Experience.svelte";
 
-	import { about, experiences, educations } from "../assets/data.json";
+	import { experiences, educations } from "../../data.json";
+
+	let about: undefined = $state();
+
+	(async () => {
+		const downloadUrl = (
+			await (
+				await fetch(
+					"https://api.github.com/repos/garyszekelyjr/garyszekelyjr.github.io/contents/data.json",
+				)
+			).json()
+		).downloadUrl;
+
+		const response = await fetch(downloadUrl);
+		if (response.ok) {
+			const data = await response.json();
+			console.log(data);
+			about = data.about;
+		}
+	})();
 </script>
 
 <div class="">

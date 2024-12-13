@@ -82,7 +82,7 @@ data = {
     'educations': educations
 }
 
-with open(Path(__file__).parent / 'assets' / 'data.json', 'w') as f:
+with open(Path(__file__).parent.parent / 'data.json', 'w') as f:
     json.dump(data, f, indent=8)
 
 print('Scraped!')
