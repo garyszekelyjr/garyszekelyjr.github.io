@@ -1,18 +1,23 @@
 <script lang="ts">
-	interface Props {
+	let {
+		name,
+		description,
+		html_url,
+		languages_url,
+	}: {
 		name: string;
 		description: string;
 		html_url: string;
 		languages_url: string;
-	}
-
-	let { name, description, html_url, languages_url }: Props = $props();
+	} = $props();
 
 	let languages: string[] = $state([]);
 
 	(async () => {
 		const response = await fetch(languages_url);
-		languages = Object.keys(await response.json());
+		if (response.ok) {
+			languages = Object.keys(await response.json());
+		}
 	})();
 </script>
 

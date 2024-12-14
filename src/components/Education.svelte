@@ -1,13 +1,17 @@
 <script lang="ts">
-	interface Props {
+	let {
+		degree,
+		major,
+		concentration,
+		school,
+		dates,
+	}: {
 		degree: string;
 		major: string;
 		concentration: string;
 		school: string;
 		dates: string;
-	}
-
-	let { degree, major, concentration, school, dates }: Props = $props();
+	} = $props();
 </script>
 
 <div class="mx-1 my-3">

@@ -10,7 +10,9 @@
 		const response = await fetch(
 			"https://api.github.com/users/garyszekelyjr/repos",
 		);
-		projects = await response.json();
+		if (response.ok) {
+			projects = await response.json();
+		}
 	})();
 </script>
 

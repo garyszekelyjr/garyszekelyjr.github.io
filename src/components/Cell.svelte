@@ -1,11 +1,13 @@
 <script lang="ts">
-	interface Props {
+	let {
+		window,
+		icon,
+		open,
+	}: {
 		window: string | undefined;
 		icon: string | undefined;
 		open: () => void;
-	}
-
-	let { window, icon, open }: Props = $props();
+	} = $props();
 </script>
 
 <div class="flex flex-col justify-center items-center">

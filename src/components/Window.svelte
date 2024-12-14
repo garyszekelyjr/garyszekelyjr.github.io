@@ -2,13 +2,15 @@
 	import { gsap } from "gsap";
 	import { Draggable } from "gsap/Draggable";
 
-	interface Props {
+	let {
+		window,
+		close,
+		children,
+	}: {
 		window: string;
 		close: () => void;
 		children?: import("svelte").Snippet;
-	}
-
-	let { window, close, children }: Props = $props();
+	} = $props();
 
 	let fullscreen = $state(screen.width < 768);
 
