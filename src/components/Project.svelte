@@ -60,23 +60,21 @@
 				</div>
 			</div>
 		</div>
-		{#each Object.entries(languages) as [language, proportion]}
-			<div class="w-1/4 flex justify-between">
-				<div>
-					<ul>
-						<li>
-							{language}
-						</li>
-					</ul>
-				</div>
-				<div>
-					<ul>
-						<li>
-							{proportion.toFixed(1)} %
-						</li>
-					</ul>
-				</div>
-			</div>
-		{/each}
+		<div class="flex">
+			<ul class="p-2">
+				{#each Object.keys(languages) as language}
+					<li>
+						{language}
+					</li>
+				{/each}
+			</ul>
+			<ul class="p-2">
+				{#each Object.values(languages) as proportion}
+					<li>
+						{proportion.toFixed(1)} %
+					</li>
+				{/each}
+			</ul>
+		</div>
 	</div>
 </div>
