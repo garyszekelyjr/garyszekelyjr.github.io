@@ -10,69 +10,73 @@
 		updated_at,
 	}: Models.Project = $props();
 
-	let languages: Record<string, number> | undefined = $state();
+	let languages: Record<string, number> = $state({});
 
 	(async () => {
 		const response = await fetch(languages_url);
 		if (response.ok) {
 			languages = await response.json();
+			const totalBytes = Object.values(languages).reduce(
+				(acc, x) => acc + x,
+				0,
+			);
+			for (const language of Object.keys(languages)) {
+				languages[language] =
+					(languages[language] / totalBytes) *
+					100;
+			}
 		}
 	})();
 </script>
 
 <div class="mx-2 my-3">
-	<div class="flex justify-between text-white">
-		<div>
-			<a
-				href={html_url}
-				target="_blank"
-				class="text-blue-500 hover:underline">{name}</a
-			>
-			<div class="mb-2">{description}</div>
-			{#if languages}
-				<div class="flex justify-between">
-					<ul class="me-2">
-						{#each Object.keys(languages) as language}
-							<li>
-								{language}
-							</li>
-						{/each}
-					</ul>
+	<div class="text-white">
+		<div class="flex justify-between">
+			<div>
+				<a
+					href={html_url}
+					target="_blank"
+					class="text-blue-500 hover:underline"
+					>{name}</a
+				>
+				<div>{description}</div>
+			</div>
+			<div>
+				<div>
+					Updated: {new Date(
+						updated_at,
+					).toLocaleDateString(undefined, {
+						year: "numeric",
+						month: "short",
+					})}
+				</div>
+				<div>
+					Created: {new Date(
+						created_at,
+					).toLocaleDateString(undefined, {
+						year: "numeric",
+						month: "short",
+					})}
+				</div>
+			</div>
+		</div>
+		{#each Object.entries(languages) as [language, proportion]}
+			<div class="w-1/4 flex justify-between">
+				<div>
 					<ul>
-						{#each Object.values(languages) as numBytes}
-							<li>
-								{(
-									(numBytes /
-										Object.values(
-											languages,
-										).reduce(
-											(
-												acc,
-												x,
-											) =>
-												acc +
-												x,
-											0,
-										)) *
-									100
-								).toFixed(2)}%
-							</li>
-						{/each}
+						<li>
+							{language}
+						</li>
 					</ul>
 				</div>
-			{/if}
-		</div>
-		<div>
-			<div class="mb-1">
-				Created: {new Date(
-					created_at,
-				).toLocaleDateString()}
+				<div>
+					<ul>
+						<li>
+							{proportion.toFixed(1)} %
+						</li>
+					</ul>
+				</div>
 			</div>
-			<div class="mb-2">
-				Updated: {new Date(
-					updated_at,
-				).toLocaleDateString()}
-			</div>
-		</div>
+		{/each}
 	</div>
 </div>
