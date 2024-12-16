@@ -31,13 +31,13 @@
 	<div
 		class={`window flex flex-col bg-neutral-900 absolute ${fullscreen ? "inset-0" : "inset-1/4"}`}
 	>
-		<div class="flex justify-between border-b p-3">
+		<div class="flex justify-between border-b p-2">
 			<span class="text-white text-4xl">{window}</span>
 			<div class="flex">
 				<button
 					aria-label="expand"
 					onclick={expand}
-					class="mr-1 hidden md:block"
+					class="hidden md:block"
 				>
 					<img
 						src={fullscreen
@@ -56,7 +56,7 @@
 				</button>
 			</div>
 		</div>
-		<div class="flex-auto overflow-auto px-3">
+		<div class="flex-auto overflow-auto">
 			{@render children?.()}
 		</div>
 	</div>

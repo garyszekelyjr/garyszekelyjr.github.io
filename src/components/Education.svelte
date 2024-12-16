@@ -14,7 +14,7 @@
 	} = $props();
 </script>
 
-<div class="mx-1 my-3">
+<div class="p-2">
 	<div class="text-white">{degree}, {major}</div>
 	<div class="text-white">{concentration}</div>
 	<div class="text-white">{school}</div>

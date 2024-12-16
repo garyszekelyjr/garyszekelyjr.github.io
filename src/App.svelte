@@ -3,7 +3,6 @@
 	import Background from "./components/Background.svelte";
 	import Cell from "./components/Cell.svelte";
 	import Projects from "./components/Projects.svelte";
-	import Taskbar from "./components/Taskbar.svelte";
 	import Window from "./components/Window.svelte";
 
 	let cells = [
@@ -24,33 +23,28 @@
 	}
 </script>
 
-<main class="flex flex-col">
-	<div class="relative flex-auto desktop">
-		<Background />
-		<div
-			class="absolute w-full h-full grid auto-rows-fr grid-cols-5 lg:grid-cols-10 p-5"
-		>
-			{#each Array.from({ length: 48 }) as _, i}
-				{@const cell = cells.find(
-					(cell) => cell.index === i,
-				)}
-				<Cell
-					window={cell?.window}
-					icon={cell?.icon}
-					open={() => open(cell?.window)}
-				/>
-			{/each}
-		</div>
-		{#each windows as window}
-			<Window {window} close={() => close(window)}>
-				{#if window === "About"}
-					<About />
-				{/if}
-				{#if window === "Projects"}
-					<Projects />
-				{/if}
-			</Window>
+<main class="desktop">
+	<Background />
+	<div
+		class="absolute w-full h-full grid auto-rows-fr grid-cols-5 lg:grid-cols-10 p-5"
+	>
+		{#each Array.from({ length: 48 }) as _, i}
+			{@const cell = cells.find((cell) => cell.index === i)}
+			<Cell
+				window={cell?.window}
+				icon={cell?.icon}
+				open={() => open(cell?.window)}
+			/>
 		{/each}
 	</div>
-	<Taskbar />
+	{#each windows as window}
+		<Window {window} close={() => close(window)}>
+			{#if window === "About"}
+				<About />
+			{/if}
+			{#if window === "Projects"}
+				<Projects />
+			{/if}
+		</Window>
+	{/each}
 </main>
