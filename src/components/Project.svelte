@@ -1,8 +1,6 @@
 <script lang="ts">
 	import type * as Models from "../models";
 
-	import Chart from "chart.js/auto";
-
 	let {
 		name,
 		description,
@@ -13,8 +11,6 @@
 	}: Models.Project = $props();
 
 	let languages: Record<string, number> = $state({});
-
-	let chart: HTMLCanvasElement | undefined;
 
 	(async () => {
 		const response = await fetch(languages_url);
@@ -29,34 +25,20 @@
 					(languages[language] / totalBytes) *
 					100;
 			}
-
-			if (chart) {
-				new Chart(chart, {
-					type: "pie",
-					data: {
-						labels: Object.keys(languages),
-						datasets: [
-							{
-								data: Object.values(
-									languages,
-								),
-							},
-						],
-					},
-				});
-			}
 		}
 	})();
 </script>
 
-<div class="flex justify-between p-4 text-white">
-	<div>
-		<a
-			href={html_url}
-			target="_blank"
-			class="text-blue-500 hover:underline">{name}</a
-		>
-		<div>{description}</div>
+<div class="flex justify-between text-white">
+	<div class="flex flex-col">
+		<div class="flex-auto">
+			<a
+				href={html_url}
+				target="_blank"
+				class="text-blue-500 hover:underline">{name}</a
+			>
+			<div>{description}</div>
+		</div>
 		<div>
 			Updated: {new Date(updated_at).toLocaleDateString(
 				undefined,
@@ -76,7 +58,16 @@
 			)}
 		</div>
 	</div>
-	<div>
-		<canvas bind:this={chart}></canvas>
+	<div class="flex">
+		<div>
+			{#each Object.keys(languages) as language}
+				<div>{language}</div>
+			{/each}
+		</div>
+		<div class="flex flex-col items-end">
+			{#each Object.values(languages) as proportion}
+				<div>{proportion.toFixed(1)} %</div>
+			{/each}
+		</div>
 	</div>
 </div>

@@ -19,13 +19,15 @@
 	})();
 </script>
 
-{#if projects}
-	{#each projects as project, index}
-		<Project {...project} />
-		{#if index < projects.length - 1}
-			<hr />
-		{/if}
-	{/each}
-{:else}
-	<Loader />
-{/if}
+<div class="flex-auto">
+	{#if projects}
+		{#each projects as project, index}
+			<Project {...project} />
+			{#if index < projects.length - 1}
+				<hr />
+			{/if}
+		{/each}
+	{:else}
+		<Loader />
+	{/if}
+</div>

@@ -10,7 +10,7 @@
 	} = $props();
 </script>
 
-<div class="p-2">
+<div>
 	<div class="text-white">{title}</div>
 	<div class="text-white">{company}</div>
 	<div class="text-white">{dates}</div>
