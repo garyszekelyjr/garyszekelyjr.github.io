@@ -10,8 +10,8 @@
 	} = $props();
 </script>
 
-<div>
-	<div class="text-white">{title}</div>
-	<div class="text-white">{company}</div>
-	<div class="text-white">{dates}</div>
+<div class="py-3">
+	<div>{title}</div>
+	<div>{company}</div>
+	<div class="text-subtext">{dates}</div>
 </div>

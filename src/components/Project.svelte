@@ -29,17 +29,25 @@
 	})();
 </script>
 
-<div class="flex justify-between text-white">
-	<div class="flex flex-col">
-		<div class="flex-auto">
-			<a
-				href={html_url}
-				target="_blank"
-				class="text-blue-500 hover:underline">{name}</a
-			>
-			<div>{description}</div>
-		</div>
+<div>
+	<a href={html_url} target="_blank" class="text-blue hover:underline"
+		>{name}</a
+	>
+	<div>{description}</div>
+	<div class="flex justify-between py-3">
 		<div>
+			{#each Object.keys(languages) as language}
+				<div>{language}:</div>
+			{/each}
+		</div>
+		<div class="text-end">
+			{#each Object.values(languages) as proportion}
+				<div>{proportion.toFixed(1)} %</div>
+			{/each}
+		</div>
+	</div>
+	<div>
+		<div class="text-subtext">
 			Updated: {new Date(updated_at).toLocaleDateString(
 				undefined,
 				{
@@ -48,7 +56,7 @@
 				},
 			)}
 		</div>
-		<div>
+		<div class="text-subtext">
 			Created: {new Date(created_at).toLocaleDateString(
 				undefined,
 				{
@@ -56,18 +64,6 @@
 					month: "short",
 				},
 			)}
-		</div>
-	</div>
-	<div class="flex">
-		<div>
-			{#each Object.keys(languages) as language}
-				<div>{language}</div>
-			{/each}
-		</div>
-		<div class="flex flex-col items-end">
-			{#each Object.values(languages) as proportion}
-				<div>{proportion.toFixed(1)} %</div>
-			{/each}
 		</div>
 	</div>
 </div>

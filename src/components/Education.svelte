@@ -14,9 +14,9 @@
 	} = $props();
 </script>
 
-<div>
-	<div class="text-white">{degree}, {major}</div>
-	<div class="text-white">{concentration}</div>
-	<div class="text-white">{school}</div>
-	<div class="text-white">{dates}</div>
+<div class="py-3">
+	<div>{degree}, {major}</div>
+	<div>{concentration}</div>
+	<div>{school}</div>
+	<div class="text-subtext">{dates}</div>
 </div>
