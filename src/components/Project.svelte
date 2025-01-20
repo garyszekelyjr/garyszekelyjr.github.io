@@ -34,10 +34,10 @@
 		>{name}</a
 	>
 	<div>{description}</div>
-	<div class="flex justify-between py-3">
-		<div>
+	<div class="flex py-3">
+		<div class="pe-3">
 			{#each Object.keys(languages) as language}
-				<div>{language}:</div>
+				<div>{language}</div>
 			{/each}
 		</div>
 		<div class="text-end">
