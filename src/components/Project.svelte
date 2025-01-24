@@ -29,19 +29,13 @@
 	})();
 </script>
 
-<div>
-	<a href={html_url} target="_blank" class="text-blue hover:underline"
-		>{name}</a
-	>
+<div class="project">
+	<a href={html_url} target="_blank" class="link">{name}</a>
 	<div>{description}</div>
-	<div class="flex py-3">
-		<div class="pe-3">
-			{#each Object.keys(languages) as language}
+	<div class="flex-auto py-2">
+		<div class="grid grid-cols-2">
+			{#each Object.entries(languages) as [language, proportion]}
 				<div>{language}</div>
-			{/each}
-		</div>
-		<div class="text-end">
-			{#each Object.values(languages) as proportion}
 				<div>{proportion.toFixed(1)} %</div>
 			{/each}
 		</div>

@@ -1,31 +1,31 @@
 {
-        "about": "I like to code.",
-        "experiences": [
-                {
-                        "title": "Data Engineer",
-                        "company": "Edmunds GovTech",
-                        "dates": "Jan 2024 - Present"
-                },
-                {
-                        "title": "Software Developer",
-                        "company": "UMass Amherst Data Analytics and Computational Social Science",
-                        "dates": "Jun 2021 - May 2023"
-                }
-        ],
-        "educations": [
-                {
-                        "school": "University of Massachusetts Amherst",
-                        "degree": "Master of Science - MS",
-                        "major": "Computer Science",
-                        "concentration": "Concentration: Security",
-                        "dates": "2022 - 2023"
-                },
-                {
-                        "school": "University of Massachusetts Amherst",
-                        "degree": "Bachelor of Science - BS",
-                        "major": "Computer Science & Mathematics",
-                        "concentration": "Concentration: Mathematical Computing",
-                        "dates": "2018 - 2022"
-                }
-        ]
+	"about": "I like to code.",
+	"experiences": [
+		{
+			"title": "Data Engineer",
+			"company": "Edmunds GovTech",
+			"dates": "Jan 2024 - Present"
+		},
+		{
+			"title": "Software Developer",
+			"company": "UMass Amherst Data Analytics and Computational Social Science",
+			"dates": "Jun 2021 - May 2023"
+		}
+	],
+	"educations": [
+		{
+			"school": "University of Massachusetts Amherst",
+			"degree": "Master of Science - MS",
+			"major": "Computer Science",
+			"concentration": "Concentration: Security",
+			"dates": "2022 - 2023"
+		},
+		{
+			"school": "University of Massachusetts Amherst",
+			"degree": "Bachelor of Science - BS",
+			"major": "Computer Science & Mathematics",
+			"concentration": "Concentration: Mathematical Computing",
+			"dates": "2018 - 2022"
+		}
+	]
 }

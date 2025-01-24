@@ -19,18 +19,12 @@
 	})();
 </script>
 
-<div
-	class="flex-auto flex flex-col lg:flex-row lg:flex-wrap justify-around p-10"
->
-	{#if projects}
-		{#each projects as project, index}
+{#if projects}
+	<div class="grid grid-cols-2 gap-4">
+		{#each projects as project}
 			<Project {...project} />
-			{#if index < projects.length - 1}
-				<br />
-			{/if}
 		{/each}
-	{:else}
-		<Loader />
-	{/if}
-</div>
-<div class="text-end p-5">Source: GitHub</div>
+	</div>
+{:else}
+	<Loader />
+{/if}

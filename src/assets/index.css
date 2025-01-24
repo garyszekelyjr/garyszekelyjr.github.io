@@ -3,18 +3,31 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: VT323;
-    src: url(VT323.ttf);
+	font-family: JetBrainsMono;
+	src: url(JetBrainsMono-VariableFont_wght.ttf);
+}
+
+@font-face {
+	font-family: VT323;
+	src: url(VT323.ttf);
 }
 
 * {
-    font-family: VT323;
-    color: white;
+	font-family: JetBrainsMono;
+	color: white;
 }
 
 #app {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: #11111b;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background-color: #11111b;
+}
+
+.link {
+	@apply text-blue hover:underline;
+}
+
+.project {
+	@apply p-5 border rounded flex flex-col;
 }
