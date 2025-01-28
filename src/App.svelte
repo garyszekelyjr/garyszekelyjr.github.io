@@ -7,6 +7,6 @@
 </script>
 
 <Navbar bind:component />
-<div class="p-8">
+<div class="px-10">
 	<svelte:component this={{ Home, Projects }[component]} />
 </div>

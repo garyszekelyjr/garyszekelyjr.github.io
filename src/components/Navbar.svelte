@@ -16,11 +16,11 @@
 	];
 </script>
 
-<nav class="flex p-8">
+<nav class="flex p-10">
 	<div class="flex-auto">
 		{#each tabs as tab}
 			<button
-				class={`link ${component === tab ? "selected" : null} px-1`}
+				class="link pe-2"
 				on:click={() => {
 					component = tab;
 				}}>{tab}</button
@@ -29,7 +29,7 @@
 	</div>
 	<div class="flex">
 		{#each socials as { href, src, alt }}
-			<a {href} target="_blank" class="px-1">
+			<a {href} target="_blank" class="ps-2">
 				<img {src} {alt} width="25" height="25" />
 			</a>
 		{/each}

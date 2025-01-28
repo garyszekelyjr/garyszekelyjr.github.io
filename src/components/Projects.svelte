@@ -20,7 +20,7 @@
 </script>
 
 {#if projects}
-	<div class="grid grid-cols-2 gap-4">
+	<div class="grid lg:grid-cols-2 gap-4">
 		{#each projects as project}
 			<Project {...project} />
 		{/each}
