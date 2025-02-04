@@ -13,18 +13,20 @@
 		if (response.ok) {
 			projects = await response.json();
 			projects?.sort((a, b) =>
-				a["updated_at"] < b["updated_at"] ? 1 : -1,
+				b["updated_at"].localeCompare(a["updated_at"]),
 			);
 		}
 	})();
 </script>
 
-{#if projects}
-	<div class="grid lg:grid-cols-2 gap-4">
-		{#each projects as project}
-			<Project {...project} />
-		{/each}
-	</div>
-{:else}
-	<Loader />
-{/if}
+<div class="p-10" id="/projects">
+	{#if projects}
+		<div class="grid lg:grid-cols-2 gap-5">
+			{#each projects as project}
+				<Project {...project} />
+			{/each}
+		</div>
+	{:else}
+		<Loader />
+	{/if}
+</div>

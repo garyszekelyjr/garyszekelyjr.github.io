@@ -1,8 +1,6 @@
 <script lang="ts">
-	export let component: string;
-
-	const tabs = ["Home", "Projects"];
-	const socials = [
+	const TABS = ["Home", "Projects"];
+	const SOCIALS = [
 		{
 			href: "https://linkedin.com/in/garyszekelyjr",
 			src: "linkedin.svg",
@@ -16,19 +14,16 @@
 	];
 </script>
 
-<nav class="flex p-10">
+<nav class="flex p-10 sticky top-0 bg-mantle">
 	<div class="flex-auto">
-		{#each tabs as tab}
-			<button
-				class="link pe-2"
-				on:click={() => {
-					component = tab;
-				}}>{tab}</button
+		{#each TABS as tab}
+			<a href={`#/${tab.toLowerCase()}`} class="link pe-2"
+				>{tab}</a
 			>
 		{/each}
 	</div>
 	<div class="flex">
-		{#each socials as { href, src, alt }}
+		{#each SOCIALS as { href, src, alt }}
 			<a {href} target="_blank" class="ps-2">
 				<img {src} {alt} width="25" height="25" />
 			</a>
