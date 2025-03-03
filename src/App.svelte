@@ -1,9 +1,7 @@
 <script lang="ts">
-	import Home from "./components/Home.svelte";
-	import Navbar from "./components/Navbar.svelte";
-	import Projects from "./components/Projects.svelte";
+	import Home from "./Home.svelte";
+	import Navbar from "./Navbar.svelte";
 </script>
 
 <Navbar />
 <Home />
-<Projects />

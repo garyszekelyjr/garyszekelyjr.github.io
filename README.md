@@ -1,1 +1,4 @@
-# garyszekelyjr.github.io
+# The Gary Szekely Jr Website
+<https://garyszekelyjr.github.io> 
+
+
