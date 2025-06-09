@@ -1,6 +1,9 @@
 <script lang="ts">
 	import type { Languages } from "../typescript/models";
-	import { fetch_languages, fetch_projects } from "../typescript/utils";
+	import {
+		fetch_languages,
+		fetch_projects,
+	} from "../typescript/utilities";
 
 	let languages: Languages = $state({});
 
