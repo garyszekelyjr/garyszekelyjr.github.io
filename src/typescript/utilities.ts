@@ -1,9 +1,10 @@
 import fs from 'fs';
+import yaml from 'js-yaml';
 
 import type { Languages, Project } from "./models";
 
 
-export async function fetch_projects(): Promise<Project[]> {
+export async function fetchProjects(): Promise<Project[]> {
 	const RESPONSE = await fetch("https://api.github.com/users/garyszekelyjr/repos");
 	if (RESPONSE.ok) {
 		return RESPONSE.json();
@@ -11,7 +12,7 @@ export async function fetch_projects(): Promise<Project[]> {
 	return []
 }
 
-export async function fetch_languages(languages_url: string): Promise<Languages> {
+export async function fetchLanguages(languages_url: string): Promise<Languages> {
 	const RESPONSE = await fetch(languages_url);
 	if (RESPONSE.ok) {
 		return RESPONSE.json();
@@ -19,11 +20,19 @@ export async function fetch_languages(languages_url: string): Promise<Languages>
 	return {}
 }
 
-export async function download_language_colors() {
+export async function downloadLanguageColors() {
 	const RESPONSE = await fetch("https://api.github.com/repos/github-linguist/linguist/contents/lib/linguist/languages.yml");
 	if (RESPONSE.ok) {
 		const data = await RESPONSE.json();
-		fs.writeFile("languages.yml", Buffer.from(data.content, 'base64').toString(), () => { })
+		fs.writeFile("../../public/languages.yml", Buffer.from(data.content, 'base64').toString(), () => { })
 	}
+}
+
+export async function getLanguageColor(language: string): Promise<string> {
+	const response = await fetch('languages.yml');
+	console.log(response);
+	const colors: any = yaml.load(await response.text());
+	const color = colors[language]["color"]
+	return color;
 }
 
