@@ -23,25 +23,32 @@
 
         function calculateLanguageProportion(language: string): number {
                 let count = languages[language];
-                let proportion = ((count / totalCount) * 100).toFixed(2);
-                return Number(proportion);
+                let proportion = (count / totalCount) * 100;
+                return proportion;
         }
 </script>
 
 <div class="p-10">
         <h1>GitHub Breakdown</h1>
-        <div class="w-full">
-                {#each Object.entries(languages).sort((a, b) => b[1] - a[1]) as [language, _]}
-                        {#await getLanguageColor(language) then color}
-                                <div class="w-full">
-                                        <div
-                                                class="inline-block h-[10px] mr-1"
-                                                style={`background-color: ${color}; width: ${calculateLanguageProportion(language) * 2}%;`}
-                                        ></div>
-                                        {language}
-                                        {calculateLanguageProportion(language)}%
-                                </div>
-                        {/await}
-                {/each}
+        <hr class="mt-1 mb-2" />
+        <div class="w-full flex gap-10">
+                <div>
+                        {#each Object.entries(languages).sort((a, b) => b[1] - a[1]) as [language, _]}
+                                <div>{language}</div>
+                        {/each}
+                </div>
+                <div class="flex-auto">
+                        {#each Object.entries(languages).sort((a, b) => b[1] - a[1]) as [language, _]}
+                                {#await getLanguageColor(language) then color}
+                                        <div class="w-full flex items-center gap-5">
+                                                <div
+                                                        class="inline-block h-[12px]"
+                                                        style={`background-color: ${color}; width: ${calculateLanguageProportion(language)}%;`}
+                                                ></div>
+                                                {calculateLanguageProportion(language).toFixed(2)}%
+                                        </div>
+                                {/await}
+                        {/each}
+                </div>
         </div>
 </div>
