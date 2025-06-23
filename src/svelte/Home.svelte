@@ -5,7 +5,6 @@
         import { fetchLanguages, fetchProjects, getLanguageColor } from "../typescript/utilities";
 
         let languages: Languages = $state({});
-        let totalCount = 0;
 
         onMount(async () => {
                 const PROJECTS = await fetchProjects();
@@ -16,14 +15,27 @@
                                         languages[LANGUAGE] = 0;
                                 }
                                 languages[LANGUAGE] += COUNT;
-                                totalCount += COUNT;
                         }
                 }
         });
 
-        function calculateLanguageProportion(language: string): number {
+        function getMaxCount(): number {
+                return Math.max(...Object.values(languages));
+        }
+
+        function getTotalCount(): number {
+                return Object.values(languages).reduce((acc, curr) => acc + curr, 0);
+        }
+
+        function getAbsoluteLanguageProportion(language: string): number {
                 let count = languages[language];
-                let proportion = (count / totalCount) * 100;
+                let proportion = (count / getTotalCount()) * 100;
+                return proportion;
+        }
+
+        function getRelativeLanguageProportion(language: string): number {
+                let count = languages[language];
+                let proportion = (count / getMaxCount()) * 100;
                 return proportion;
         }
 </script>
@@ -43,9 +55,9 @@
                                         <div class="w-full flex items-center gap-5">
                                                 <div
                                                         class="inline-block h-[12px]"
-                                                        style={`background-color: ${color}; width: ${calculateLanguageProportion(language)}%;`}
+                                                        style={`background-color: ${color}; width: ${getRelativeLanguageProportion(language)}%`}
                                                 ></div>
-                                                {calculateLanguageProportion(language).toFixed(2)}%
+                                                {getAbsoluteLanguageProportion(language).toFixed(2)}%
                                         </div>
                                 {/await}
                         {/each}
