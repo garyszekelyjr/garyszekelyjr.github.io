@@ -53,16 +53,25 @@
 <div class="p-10">
         <div class="flex justify-between">
                 <h1>GitHub Breakdown</h1>
-                <button
-                        onclick={() => {
-                                summary = !summary;
-                                localStorage.setItem("summary", summary.toString());
-                        }}
-                        class="border rounded p-1 hover:bg-white hover:text-crust">{summary ? "By Project" : "Summary"}</button
-                >
+                <div>
+                        <button
+                                onclick={() => {
+                                        summary = true;
+                                        localStorage.setItem("summary", summary.toString());
+                                }}
+                                class={`border rounded p-1 ${summary ? "bg-white text-crust" : null}`}>Summary</button
+                        >
+                        <button
+                                onclick={() => {
+                                        summary = false;
+                                        localStorage.setItem("summary", summary.toString());
+                                }}
+                                class={`border rounded p-1 ${summary ? null : "bg-white text-crust"}`}>By Project</button
+                        >
+                </div>
         </div>
+        <hr class="my-2" />
         {#if summary}
-                <hr class="my-2" />
                 <div class="w-full flex gap-3">
                         <div>
                                 {#each getLanguages() as language}
@@ -72,7 +81,7 @@
                         <div class="flex-auto">
                                 {#each getLanguages() as language}
                                         {#await getLanguageColor(language) then color}
-                                                <div class="w-full flex items-center gap-3">
+                                                <div class="w-full flex items-center gap-2">
                                                         <div
                                                                 class="inline-block h-[12px]"
                                                                 style={`background-color: ${color}; width: ${getRelativeLanguageProportion(language)}%`}
@@ -85,10 +94,11 @@
                 </div>
         {:else}
                 {#await fetchProjects() then projects}
-                        {#each projects as project}
-                                <hr class="my-2" />
-                                <ProjectComponent {...project} />
-                        {/each}
+                        <div class="grid grid-cols-1 xl:grid-cols-2 gap-2">
+                                {#each projects as project}
+                                        <ProjectComponent {...project} />
+                                {/each}
+                        </div>
                 {/await}
         {/if}
 </div>

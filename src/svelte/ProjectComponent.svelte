@@ -47,12 +47,12 @@
 </script>
 
 <div>
-        <div class="flex">
-                <div class="flex-auto">
+        <div class="flex p-2 border rounded">
+                <div class="w-1/4">
                         <a href={html_url} target="_blank" class="link">{name}</a>
                         <p class="text-sm">{description}</p>
                 </div>
-                <div class="w-1/2 flex gap-3">
+                <div class="flex-auto flex gap-2">
                         <div class="w-1/4">
                                 {#each getLanguages() as language}
                                         <div class="text-right">{language}</div>
