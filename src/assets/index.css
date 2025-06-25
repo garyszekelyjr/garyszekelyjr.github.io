@@ -27,7 +27,3 @@
 .link {
 	@apply text-blue hover:underline;
 }
-
-.project {
-	@apply p-5 border rounded flex flex-col;
-}

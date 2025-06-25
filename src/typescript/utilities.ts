@@ -7,7 +7,7 @@ import type { Languages, Project } from "./models";
 export async function fetchProjects(): Promise<Project[]> {
 	const RESPONSE = await fetch("https://api.github.com/users/garyszekelyjr/repos");
 	if (RESPONSE.ok) {
-		return RESPONSE.json();
+		return await RESPONSE.json();
 	}
 	return []
 }
@@ -15,7 +15,7 @@ export async function fetchProjects(): Promise<Project[]> {
 export async function fetchLanguages(languages_url: string): Promise<Languages> {
 	const RESPONSE = await fetch(languages_url);
 	if (RESPONSE.ok) {
-		return RESPONSE.json();
+		return await RESPONSE.json();
 	}
 	return {}
 }
@@ -30,7 +30,6 @@ export async function downloadLanguageColors() {
 
 export async function getLanguageColor(language: string): Promise<string> {
 	const response = await fetch('languages.yml');
-	console.log(response);
 	const colors: any = yaml.load(await response.text());
 	const color = colors[language]["color"]
 	return color;
