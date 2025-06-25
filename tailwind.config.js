@@ -11,8 +11,6 @@ export default {
 		extend: {},
 	},
 	plugins: [],
-	safelist: [{
-		pattern: /(text-yellow)/
-	}]
+	safelist: []
 }
 

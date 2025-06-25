@@ -2,7 +2,14 @@
         import { onMount } from "svelte";
 
         import type { Languages } from "../typescript/models";
-        import { fetchLanguages, fetchProjects, getLanguageColor } from "../typescript/utilities";
+        import {
+                fetchLanguages,
+                fetchProjects,
+                getSortedLanguages,
+                getAbsoluteLanguageProportion,
+                getRelativeLanguageProportion,
+                getLanguageColor,
+        } from "../typescript/utilities";
 
         import ProjectComponent from "./ProjectComponent.svelte";
 
@@ -21,33 +28,6 @@
                         }
                 }
         });
-
-        function getLanguages(): string[] {
-                return Object.entries(languages)
-                        .sort((a, b) => b[1] - a[1])
-                        .map((e) => e[0]);
-        }
-
-        function getMaxCount(): number {
-                return Math.max(...Object.values(languages));
-        }
-
-        function getTotalCount(): number {
-                return Object.values(languages).reduce((previousValue, currentValue) => previousValue + currentValue, 0);
-        }
-
-        function getProportion(language: string, totalCount: number): number {
-                let count = languages[language];
-                return (count / totalCount) * 100;
-        }
-
-        function getAbsoluteLanguageProportion(language: string): number {
-                return getProportion(language, getTotalCount());
-        }
-
-        function getRelativeLanguageProportion(language: string): number {
-                return getProportion(language, getMaxCount());
-        }
 </script>
 
 <div class="p-10">
@@ -72,21 +52,21 @@
         </div>
         <hr class="my-2" />
         {#if summary}
-                <div class="w-full flex gap-3">
+                <div class="flex gap-2">
                         <div>
-                                {#each getLanguages() as language}
+                                {#each getSortedLanguages(languages) as language}
                                         <div class="text-right">{language}</div>
                                 {/each}
                         </div>
                         <div class="flex-auto">
-                                {#each getLanguages() as language}
+                                {#each getSortedLanguages(languages) as language}
                                         {#await getLanguageColor(language) then color}
-                                                <div class="w-full flex items-center gap-2">
+                                                <div class="flex items-center gap-2">
                                                         <div
                                                                 class="inline-block h-[12px]"
-                                                                style={`background-color: ${color}; width: ${getRelativeLanguageProportion(language)}%`}
+                                                                style={`background-color: ${color}; width: ${getRelativeLanguageProportion(languages, language)}%`}
                                                         ></div>
-                                                        {getAbsoluteLanguageProportion(language).toFixed(2)}%
+                                                        {getAbsoluteLanguageProportion(languages, language).toFixed(2)}%
                                                 </div>
                                         {/await}
                                 {/each}

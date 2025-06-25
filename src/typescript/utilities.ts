@@ -35,3 +35,29 @@ export async function getLanguageColor(language: string): Promise<string> {
 	return color;
 }
 
+export function getSortedLanguages(languages: Languages): string[] {
+	return Object.entries(languages)
+		.sort((a, b) => b[1] - a[1])
+		.map((e) => e[0]);
+}
+
+export function getProportion(languages: Languages, language: string, totalCount: number): number {
+	let count = languages[language];
+	return (count / totalCount) * 100;
+}
+
+export function getAbsoluteLanguageProportion(languages: Languages, language: string): number {
+	return getProportion(languages, language, getTotalCount(languages));
+}
+
+export function getRelativeLanguageProportion(languages: Languages, language: string): number {
+	return getProportion(languages, language, getMaxCount(languages));
+}
+
+function getMaxCount(languages: Languages): number {
+	return Math.max(...Object.values(languages));
+}
+
+function getTotalCount(languages: Languages): number {
+	return Object.values(languages).reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+}
