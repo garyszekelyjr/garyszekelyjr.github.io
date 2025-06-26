@@ -6,7 +6,8 @@ export default {
 			'blue': '#89b4fa',
 			'crust': '#11111b',
 			'mantle': '#181825',
-			'white': 'white'
+			'white': 'white',
+			'muted': '#bac2de'
 		},
 		extend: {},
 	},

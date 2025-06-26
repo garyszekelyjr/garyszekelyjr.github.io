@@ -14,7 +14,7 @@
         import ProjectComponent from "./ProjectComponent.svelte";
 
         let languages: Languages = $state({});
-        let summary: boolean = $state(JSON.parse(localStorage.getItem("summary") || "true"));
+        let summary: boolean = $state(JSON.parse(localStorage.getItem("summary") || "false"));
 
         onMount(async () => {
                 const PROJECTS = await fetchProjects();
@@ -31,8 +31,8 @@
 </script>
 
 <div class="p-10">
-        <div class="flex justify-between">
-                <h1>GitHub Breakdown</h1>
+        <div class="flex justify-between items-center">
+                <h1>Projects</h1>
                 <div>
                         <button
                                 onclick={() => {
@@ -74,7 +74,7 @@
                 </div>
         {:else}
                 {#await fetchProjects() then projects}
-                        <div class="grid grid-cols-1 xl:grid-cols-2 gap-2">
+                        <div class="grid grid-cols-1 2xl:grid-cols-2 gap-2">
                                 {#each projects as project}
                                         <ProjectComponent {...project} />
                                 {/each}

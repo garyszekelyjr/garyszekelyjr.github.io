@@ -29,10 +29,10 @@
         <div class="flex flex-col xl:flex-row gap-2 p-2 border rounded">
                 <div class="xl:w-1/4">
                         <a href={html_url} target="_blank" class="link">{name}</a>
-                        <p class="text-sm">{description}</p>
+                        <p class="text-sm text-muted">{description}</p>
                 </div>
                 <div class="flex-auto flex gap-2">
-                        <div class="xl:w-1/4">
+                        <div class="w-5/12 md:w-1/6">
                                 {#each getSortedLanguages(languages) as language}
                                         <div class="text-right">{language}</div>
                                 {/each}
