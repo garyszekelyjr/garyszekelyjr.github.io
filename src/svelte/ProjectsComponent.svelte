@@ -39,23 +39,23 @@
                                         summary = true;
                                         localStorage.setItem("summary", summary.toString());
                                 }}
-                                class={`border rounded p-1 ${summary ? "bg-white text-crust" : null}`}>Summary</button
+                                class={`border rounded p-2 ${summary ? "bg-white text-crust" : null}`}>Summary</button
                         >
                         <button
                                 onclick={() => {
                                         summary = false;
                                         localStorage.setItem("summary", summary.toString());
                                 }}
-                                class={`border rounded p-1 ${summary ? null : "bg-white text-crust"}`}>By Project</button
+                                class={`border rounded p-2 ${summary ? null : "bg-white text-crust"}`}>By Project</button
                         >
                 </div>
         </div>
-        <hr class="my-2" />
+        <hr class="mt-2 mb-4" />
         {#if summary}
-                <div class="flex gap-2">
+                <div class="flex gap-4">
                         <div>
                                 {#each getSortedLanguages(languages) as language}
-                                        <div class="text-right">{language}</div>
+                                        <div class="text-left">{language}</div>
                                 {/each}
                         </div>
                         <div class="flex-auto">
@@ -74,7 +74,7 @@
                 </div>
         {:else}
                 {#await fetchProjects() then projects}
-                        <div class="grid grid-cols-1 2xl:grid-cols-2 gap-2">
+                        <div class="flex flex-col justify-center gap-4">
                                 {#each projects as project}
                                         <ProjectComponent {...project} />
                                 {/each}

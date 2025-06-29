@@ -2,6 +2,4 @@
         import ProjectsComponent from "./ProjectsComponent.svelte";
 </script>
 
-<div>
-        <ProjectsComponent />
-</div>
+<ProjectsComponent />

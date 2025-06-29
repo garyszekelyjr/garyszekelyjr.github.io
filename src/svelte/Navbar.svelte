@@ -13,7 +13,7 @@
         ];
 </script>
 
-<nav class="flex p-5 sticky top-0 bg-mantle">
+<nav class="flex p-4 sticky top-0 bg-mantle">
         <div class="flex-auto">The Gary Szekely Jr. Website</div>
         <div class="flex">
                 {#each SOCIALS as { href, src, alt }}
